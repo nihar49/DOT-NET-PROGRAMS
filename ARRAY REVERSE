@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ArrayReverse
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int[] arr = new int[10];
+
+            Console.WriteLine("Enter 10 elements into array: ");
+
+            for(int i=0;i<arr.Length;i++)
+            {
+                arr[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            Console.WriteLine("The original array is:");
+
+            for(int i=0;i<arr.Length;i++)
+            {
+                Console.Write(arr[i] + " ");
+            }
+
+            Console.WriteLine();
+
+           /* // traditional reverse array
+
+            Console.WriteLine("The array in reverse is:");
+            for(int i=arr.Length-1;i>=0;i--)
+            {
+                Console.Write(arr[i] + " ");
+            }
+            Console.WriteLine();
+            Console.ReadKey(); */
+
+            //inbuilt reverse array
+
+            Array.Reverse(arr);
+            Console.WriteLine("The reversed array is:");
+            
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.Write(arr[i] + " ");
+            }
+
+            Console.WriteLine();
+            Console.ReadKey();
+
+
+        }
+    }
+}
