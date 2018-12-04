@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CharAlphorDigits
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            char a;
+
+            Console.WriteLine("Enter a character or digit:");
+            a = Convert.ToChar(Console.ReadLine());
+
+            bool ck = char.IsLetter(a);
+            if(ck)
+            {
+                Console.WriteLine("{0} is a character", a);
+            }
+
+            bool ch = char.IsDigit(a);
+            if(ch)
+            {
+                Console.WriteLine("{0} is a digit", a);
+            }
+
+            bool cs = char.IsLetterOrDigit(a);
+            if (!cs)
+            {
+                Console.WriteLine("{0} is a special symbol", a);
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
