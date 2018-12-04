@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Constructorex1
+{
+    class Line
+    {
+
+        private double length;//length of a line
+
+        //constructor
+        public Line()
+        {
+            Console.WriteLine("Object is being created");
+        }
+
+        public void setLength(double len)
+        {
+            length = len;
+        }
+
+        public double getLength()
+        {
+            return length;
+        }
+
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Line line = new Line();
+
+            line.setLength(6.0);
+            Console.WriteLine("Length of line is {0}", line.getLength());
+
+            Console.ReadKey();
+
+
+
+        }
+    }
+}
