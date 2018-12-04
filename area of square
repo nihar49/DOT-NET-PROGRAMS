@@ -1,0 +1,26 @@
+//AREA OF SQUARE
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AreaSquare
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double side;
+            double area;
+
+            Console.WriteLine("Enter side of square");
+            side = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine();
+            area = side * side;
+            Console.WriteLine("The area of the square with side {0} is {1}",side,area);
+            Console.ReadKey();
+        }
+    }
+}
