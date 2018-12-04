@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ElementsInArray
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+             int[] arr = { 10, 20, 22, 21, 11, 23, 45, 46, 34, 67, 68, 56};
+
+            Console.WriteLine("The array elements are:");
+
+            foreach(int i in arr)
+            {
+                Console.Write(i+" ");
+            }
+            Console.WriteLine();
+
+            int count = 0;
+
+            foreach(int i in arr)
+             {
+                 count++;
+             }
+
+             Console.WriteLine("The length of the array is {0}", count);
+             Console.ReadKey();
+
+        }
+    }
+}
