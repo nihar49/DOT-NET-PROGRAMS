@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SecondNoOccurence
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int num1, num2;
+
+            int count = 0;
+
+            Console.WriteLine("Enter the number 1:");
+
+            num1 = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter the number 2:");
+
+            num2 = Convert.ToInt32(Console.ReadLine());
+
+            int temp = num1;
+
+            while (num1 > 0)
+
+            {
+
+                if (num1 % 10 == num2)
+
+                {
+
+                    count++;
+
+                }
+
+                num1 = num1 / 10;
+
+            }
+
+            Console.WriteLine("The frequeny of {0} in {1} is {2}", num2,temp,count);
+
+            Console.ReadKey();
+        }
+    }
+}
