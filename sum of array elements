@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SumofArrayEle
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arr = new int[10];
+            int sum = 0;
+
+            Console.WriteLine("Enter 10 array elements:");
+
+            for(int i=0;i<arr.Length;i++)
+            {
+                arr[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            Console.WriteLine("The array is represented as:");
+
+            for(int i=0;i<arr.Length;i++)
+            {
+                Console.Write(arr[i]+" ");
+                sum = sum + arr[i];
+                
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("The sum of array elements are:" + sum);
+            Console.ReadKey();
+
+
+
+        }
+    }
+}
