@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StringUPandLOW
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            string str;
+            char[] arr;
+            int length = 0;
+
+            char ch;
+            Console.WriteLine("Input the String");
+            str = Console.ReadLine();
+
+            length = str.Length;
+
+            //character array
+            arr = str.ToCharArray(0, length);
+
+            Console.WriteLine("Converted String:");
+            for(int i=0;i<length;i++)
+            {
+                ch = arr[i];
+                if(Char.IsLower(ch))
+                    Console.Write(Char.ToUpper(ch));
+                else
+                    Console.Write(Char.ToLower(ch));
+            }
+
+            Console.WriteLine();
+            Console.ReadKey();
+
+        }
+    }
+}
