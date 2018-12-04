@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StringManipulation
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string str;
+            Console.WriteLine("Input the string:");
+            str = Console.ReadLine();
+            string rev = "";
+            string temp = null;
+
+            
+            int length = str.Length-1;
+         
+            while (length>=0)
+            {
+                rev = rev + str[length];
+                length--;
+            }
+
+            Console.WriteLine("Reverse string is {0}",rev);
+          
+            Console.WriteLine("---EXTRACT FROM 2ND POSITION");
+            temp = str.Substring(2);
+            Console.WriteLine("The extracted string is:"+temp);
+
+            Console.WriteLine("---REPLACE WITH $---");
+            Console.WriteLine("Enter the character to replace with $");
+            String c = Console.ReadLine();
+            String temp1= "";
+
+            temp1 = str.Replace(c, "$");
+
+            Console.WriteLine("New string is {0}",temp1);
+
+            Console.WriteLine("--COPY AND MODIFY STRING--");
+
+            string cp = null;
+            cp = String.Copy(str);
+
+            Console.WriteLine("The copied string is {0}",cp);
+            cp = "ranjan";
+            Console.WriteLine("The first string is {0}", str);
+            Console.WriteLine("The second modified string is {0}", cp);
+            Console.ReadKey();
+
+        }
+    }
+}
