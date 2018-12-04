@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ClassExample1
+{
+
+   class Box
+    {
+        public double length;//length of a box
+        public double breadth;//breadth of a box
+        public double height;//height of the box
+    }
+
+    class BoxTester
+    {
+        static void Main(string[] args)
+        {
+            Box box1 = new Box(); //declare box1 of type box
+            Box box2 = new Box(); //declare box2 of type box
+
+            double volume = 0.0; //initial value of volume
+
+            //specify values for box1
+            box1.length = 6.0;
+            box1.breadth = 7.0;
+            box1.height = 5.0;
+
+            //specify values for box2
+            box2.length = 12.0;
+            box2.breadth = 11.0;
+            box2.height = 10.0;
+
+            //Volume of box1
+            volume = box1.length * box1.breadth * box1.height;
+            Console.WriteLine("volume of box1 is {0}", volume);
+            
+
+            //Volume of box2
+            volume = box2.length * box2.breadth * box2.height;
+            Console.WriteLine("Volume of box2 is {0}", volume);
+            Console.ReadKey();
+
+
+
+
+        }
+
+
+    }
+}
