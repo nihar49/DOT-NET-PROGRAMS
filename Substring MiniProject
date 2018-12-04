@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MiniProjectSubstring
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           int count = 0; ;
+
+            Console.WriteLine("Enter the number of testcases:");
+            count = Convert.ToInt32(Console.ReadLine());
+           
+
+          
+            for (int i = 0; i < count; i++)
+            {
+                int m, n;
+                string str;
+                Console.WriteLine("Enter string followed by M and N indexes for substring with spaces:");
+                str = Console.ReadLine();
+                string[] str1 = str.Split(' ');
+                m = Convert.ToInt32(str1[1]);
+                n = Convert.ToInt32(str1[2]); 
+
+                string str2;
+                str2 = str1[0].Substring(m, n);
+
+                Console.WriteLine("substring is {0}",str2);
+
+                char[] arr = str2.ToCharArray();
+                Array.Sort(arr);
+                Array.Reverse(arr);
+
+                string strmiddle ="";
+                foreach(char c in arr)
+                {
+                    Console.WriteLine(c);
+                    strmiddle = strmiddle + c;
+                }
+
+                string result1 = str1[0].Substring(0, m);
+                string result3 = str1[0].Substring(m + n);
+
+                string final = result1+strmiddle+result3;
+                Console.WriteLine("the rearranged string is {0}",final);
+
+
+                //Console.WriteLine("Press any key to add string:");
+                //Console.ReadKey();
+
+
+            }
+        }
+    }
+}
