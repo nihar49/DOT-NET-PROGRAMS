@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DigitsandAlphabetsStr
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int dig = 0, alp = 0;
+            string str;
+
+            Console.WriteLine("Enter the string:");
+            str = Console.ReadLine();
+
+            foreach (char c in str)
+            {
+                bool ck = char.IsDigit(c);
+
+                if (ck)
+                {
+                    dig++;
+                    Console.WriteLine("Digit {0} ", c);
+                    Console.WriteLine("The count of digit is:" + dig);
+                }
+
+                bool ch = char.IsLetter(c);
+
+                if(ch)
+                {
+                    alp++;
+                    Console.WriteLine("Alphabet {0} ", c);
+                    Console.WriteLine("The count of alphabet is:" + alp);
+                }
+              
+
+            }
+
+            Console.WriteLine("Total Number of digits are {0} and total number of alphabets are {1}",dig,alp);
+            Console.WriteLine();
+        }
+    }
+}
