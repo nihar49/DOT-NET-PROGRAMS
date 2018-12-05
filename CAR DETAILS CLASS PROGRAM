@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CarModelClass
+{
+    class Car
+    {
+        private string carmake;
+        private string model;
+        private int mfgYear;
+        private int price;
+
+        public Car(string cmake,string md,int yr,int pr)
+        {
+            this.carmake = cmake;
+            this.model = md;
+            this.mfgYear = yr;
+            this.price = pr;
+
+        }
+
+        public void DisplayCar()
+        {
+            Console.WriteLine("The manufacturer of the car is: {0}", carmake);
+            Console.WriteLine("The model of the car is: {0}", model);
+            Console.WriteLine("The manufacturing year of the car is: {0}", mfgYear);
+            Console.WriteLine("The price of the car is: {0}", price);
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CarModelClass
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Car o = new Car("Honda", "Honda City", 1992, 1000000);
+            o.DisplayCar();
+
+        }
+    }
+}
