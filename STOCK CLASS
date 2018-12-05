@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StockClass
+{
+    class Stock
+    {
+        string stock_name;
+        string stock_symbol;
+        double previous_closing_price;
+        double current_closing_price;
+        double change;
+        double percentage_change;
+
+        public Stock(string name, string symbol, double prev_price, double current_price)
+        {
+            stock_name = name;
+            stock_symbol = symbol;
+            previous_closing_price = prev_price;
+            current_closing_price = current_price;
+        }
+
+        public double getChangePercentage()
+            {
+                change = current_closing_price - previous_closing_price;
+                percentage_change = 100 * (change / previous_closing_price);
+
+
+              return percentage_change;
+            }
+
+
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StockClass
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Stock o = new Stock("oil","$",2400000,4500000);
+            //o.getChangePercentage();
+
+            Console.WriteLine("The percentage change is {0}",o.getChangePercentage());
+
+
+
+        }
+    }
+}
