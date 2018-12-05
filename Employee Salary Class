@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EmployeeSalary
+{
+    class Employee
+    {
+        string empName;
+        double basic_salary;
+        double hra=1;
+        double da;
+        double gross_salary;
+        double tax;
+        double net_salary;
+
+        public Employee(string name,double bsalary)
+        {
+            empName = name;
+            basic_salary = bsalary;
+        }
+
+     
+        public void NetPay()
+        {
+            hra = 0.15 * basic_salary;
+            da = 0.1 * basic_salary;
+            gross_salary = hra + da + basic_salary;
+            tax = 0.08 * gross_salary;
+            net_salary = gross_salary - tax;
+            
+        }
+
+        public void Display()
+        {
+            Console.WriteLine("The salary structure of employee {0} is mentioned below:", empName);
+            Console.WriteLine("The Net Salary the employee will receive is {0}:",net_salary);
+            Console.WriteLine("The hra  the employee will receive is {0}:", hra);
+            Console.WriteLine("The basic Salary the employee will receive is {0}:", basic_salary);
+            Console.WriteLine("The da  the employee will receive is {0}:", da);
+            Console.WriteLine("The gross Salary the employee will receive is {0}:", gross_salary);
+            Console.WriteLine("The tax deduction   is {0}:", tax);
+
+
+
+        }
+
+
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EmployeeSalary
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Employee o = new Employee("Nihar Ranjan", 23000);
+            o.NetPay();
+            o.Display();
+
+
+
+        }
+    }
+}
