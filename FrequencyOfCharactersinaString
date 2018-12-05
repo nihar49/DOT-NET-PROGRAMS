@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace stringFrequency
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string str;
+            Console.WriteLine("Enter the String:");
+            str = Console.ReadLine();
+
+            //array to store frequencies
+            int[] count = new int[(int)char.MaxValue];
+
+            foreach(char c in str)
+            {
+                //increment the table
+                count[(int)c]++;
+            }
+
+            //Frequency of characters
+            for(int i=0;i<(int)char.MaxValue;i++)
+            {
+                if(count[i]>0 && char.IsLetterOrDigit((char) i))
+                {
+                    Console.WriteLine("Letter {0} :: Frequency {1}",(char)i,count[i]);
+                }
+            }
+
+        }
+    }
+}
