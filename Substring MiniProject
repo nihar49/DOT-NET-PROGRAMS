@@ -10,51 +10,44 @@ namespace MiniProjectSubstring
     {
         static void Main(string[] args)
         {
-           int count = 0; ;
 
-            Console.WriteLine("Enter the number of testcases:");
-            count = Convert.ToInt32(Console.ReadLine());
-           
-
-          
-            for (int i = 0; i < count; i++)
+            Console.WriteLine("Enter the number of test cases");
+            int numoftest = Convert.ToInt32(Console.ReadLine());
+            string[] str = new string[numoftest];
+            for (int i = 0; i < numoftest; i++)
             {
-                int m, n;
-                string str;
-                Console.WriteLine("Enter string followed by M and N indexes for substring with spaces:");
-                str = Console.ReadLine();
-                string[] str1 = str.Split(' ');
-                m = Convert.ToInt32(str1[1]);
-                n = Convert.ToInt32(str1[2]); 
-
-                string str2;
-                str2 = str1[0].Substring(m, n);
-
-                Console.WriteLine("substring is {0}",str2);
-
-                char[] arr = str2.ToCharArray();
-                Array.Sort(arr);
-                Array.Reverse(arr);
-
-                string strmiddle ="";
-                foreach(char c in arr)
-                {
-                    Console.WriteLine(c);
-                    strmiddle = strmiddle + c;
-                }
-
-                string result1 = str1[0].Substring(0, m);
-                string result3 = str1[0].Substring(m + n);
-
-                string final = result1+strmiddle+result3;
-                Console.WriteLine("the rearranged string is {0}",final);
-
-
-                //Console.WriteLine("Press any key to add string:");
-                //Console.ReadKey();
-
-
+                Console.WriteLine("Enter the String and the N and M with space");
+                str[i] = Console.ReadLine();
             }
+            // Console.WriteLine("Enter the String and the N and M with space");
+            //string str = Console.ReadLine();
+            for (int i = 0; i < numoftest; i++)
+            {
+                string[] str1 = str[i].Split(' ');
+                int a = Convert.ToInt32(str1[1]);
+                int b = Convert.ToInt32(str1[2]);
+                string str2 = str1[0].Substring(a, b);
+                Console.WriteLine(str2);
+                char[] c = str2.ToCharArray();
+                Array.Sort(c);
+                Array.Reverse(c);
+                string result2 = "";
+                foreach (char s in c)
+                {
+                    Console.WriteLine(s);
+                    result2 = result2 + s;
+                }
+                string result1 = " ";
+                result1 = str1[0].Substring(0, a);
+                string result3 = str1[0].Substring(b + a);
+                string final = result1 + result2 + result3;
+                Console.WriteLine("The final string is {0}", final);
+            }
+            Console.ReadKey();
+
+
+        }
         }
     }
-}
+
+
