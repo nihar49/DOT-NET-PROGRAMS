@@ -1,0 +1,85 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace maxandmin3Array
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arr = new int[20];
+            
+            Console.WriteLine("Enter 20 elements into the array:");
+
+            for(int j=0;j<arr.Length;j++)
+            {
+                arr[j] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            int i, first, second, third;
+            if(arr.Length<3)
+            {
+                Console.WriteLine("Invalid Input");
+                    return;
+            }
+
+            third = second = first = 000;
+
+            for(i=0;i<arr.Length;i++)
+            {
+                //if current element is greater than first
+                if (arr[i] > first)
+                {
+                    third = second;
+                    second = first;
+                    first = arr[i];
+                }
+                else if (arr[i] > second)
+                {
+                    third = second;
+                    second = arr[i];
+                }
+                else if (arr[i] > third)
+                {
+                    third = arr[i];
+                }
+            }
+
+            Console.WriteLine("The largest 3 elements are:" + first + " " + second + " " + third);
+            //Console.ReadKey();
+
+            int last, second_last, third_last;
+            last = second_last = third_last = int.MaxValue;                                                                                                                                                                                                                                                                                                            
+
+            for(int k=0;k<arr.Length;k++)
+            {
+                if(arr[k]<last)
+                {
+                    third_last = second_last;
+                    second_last = last;
+                    last = arr[k];
+
+                }
+                else if(arr[k]<second_last)
+                {
+                    third_last = second_last;
+                    second_last = arr[k];
+
+                }
+                else if(arr[k]<third_last)
+                {
+                    third_last = arr[k];
+                }
+
+            }
+
+
+            Console.WriteLine("The smallest 3 elements are:" + last + " " + second_last + " " + third_last);
+            Console.ReadKey();
+
+        }
+    }
+}
