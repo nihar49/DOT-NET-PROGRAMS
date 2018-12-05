@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RandomHelperClass
+{
+    class RandomHelper
+    {
+        int a, b;
+
+        public RandomHelper(int x,int y)
+        {
+            this.a = x;
+            this.b = y;
+        } 
+
+       public static int RandInt(int a,int b)
+        {
+            int ri;
+            Random rnd = new Random();
+            ri = rnd.Next(a, b);
+
+            return ri;
+        }
+
+        public static double RandDouble(double minimum,double maximum)
+        {
+            double rd;
+            Random rnd = new Random();
+            rd= rnd.NextDouble() * (maximum - minimum) + minimum;
+
+            return rd;
+        }
+
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RandomHelperClass
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            RandomHelper.RandInt(5,10);
+            RandomHelper.RandDouble(10.0,20.0);
+            Console.WriteLine("The random integer is {0}", RandomHelper.RandInt(5, 10));
+            Console.WriteLine("The random double is {0}", RandomHelper.RandDouble(10.0, 20.0));
+
+            Console.ReadKey();
+
+        }
+    }
+}
