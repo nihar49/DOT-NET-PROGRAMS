@@ -333,3 +333,17 @@ namespace PersonInheritance
         }
     }
 }
+
+OUTPUT:
+
+The person is above 18 years old
+The sunsign of the person is Capricorn
+The person's birthday is not today
+The username of the person is NiharRanjan123196
+The salary of hourly employee is48000
+The hra  the employee will receive is 7500:
+The da  the employee will receive is 5000:
+The gross Salary of the employee is 62500:
+The tax deduction   is 5000:
+The Final Net Salary the permanent  employee will receive is 57500:
+Press any key to continue . . .
