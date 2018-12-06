@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 interface IPayable
 {
-    double CalculatePay();
+    void CalculatePay();
 }
 
 namespace employeeInheritance
@@ -220,11 +220,11 @@ namespace employeeInheritance
             PayPerHour = Pay;
         }
 
-        public double CalculatePay()
+        public void CalculatePay()
         {
-            Temp_salary = HoursWorked*PayPerHour;
-
-            return Temp_salary;
+            Temp_salary = HoursWorked * PayPerHour;
+            Console.WriteLine("The salary of hourly employee is" + Temp_salary);
+           
         }
 
     }
@@ -252,7 +252,7 @@ namespace employeeInheritance
 
         }
 
-        public double CalculatePay()
+        public void CalculatePay()
         {
             hra = salary * 0.15;
             da = salary * 0.1;
@@ -261,13 +261,16 @@ namespace employeeInheritance
             net_pay = gross_salary - tax;
 
 
-            return net_pay;
+            Console.WriteLine("The hra  the employee will receive is {0}:", hra);
+            Console.WriteLine("The da  the employee will receive is {0}:", da);
+            Console.WriteLine("The gross Salary of the employee is {0}:", gross_salary);
+            Console.WriteLine("The tax deduction   is {0}:", tax);
+
+            Console.WriteLine("The Final Net Salary the permanent  employee will receive is {0}:", net_pay);
 
         }
     }
 }
-
-main program
 
 using System;
 using System.Collections.Generic;
@@ -275,26 +278,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-
-
-
-namespace employeeInheritance
+namespace PersonInheritance
 {
     class Program
     {
         static void Main(string[] args)
         {
-            DateTime value = new DateTime(1996,12,31);
-         
-            Employee o = new Employee("Nihar", "Ranjan", "xyz@gmail.com", value,25000);
+            DateTime value = new DateTime(1996, 12, 31);
 
-            
+            Employee o = new Employee("Nihar", "Ranjan", "xyz@gmail.com", value, 25000);
+
+
 
             bool x = o.isAdult();
 
 
-            if (x==true)
+            if (x == true)
             {
                 Console.WriteLine("The person is above 18 years old");
             }
@@ -304,7 +303,7 @@ namespace employeeInheritance
             }
 
             string sunsign = o.sunSign();
-            Console.WriteLine("The sunsign of the person is {0}",sunsign);
+            Console.WriteLine("The sunsign of the person is {0}", sunsign);
 
             bool b = o.isBirthday();
 
@@ -318,19 +317,19 @@ namespace employeeInheritance
             }
 
             string username = o.ScreenName();
-            Console.WriteLine("The username of the person is {0}",username);
+            Console.WriteLine("The username of the person is {0}", username);
 
 
             HourlyEmployee h = new HourlyEmployee("Nihar", "Ranjan", "xyz@gmail.com", value, 24, 2000);
-            double pay = h.CalculatePay();
 
-            Console.WriteLine("The net pay of hourly employee is {0}",pay);
 
-            PermanentEmployee p = new PermanentEmployee("Nihar", "Ranjan", "xyz@gmail.com", value,50000);
-            double pay1 = p.CalculatePay();
-          
-            Console.WriteLine("The net pay of permanent employee is {0}", pay1);
+            h.CalculatePay();
+
+            PermanentEmployee p = new PermanentEmployee("Nihar", "Ranjan", "xyz@gmail.com", value, 50000);
+            p.CalculatePay();
+
+
+
         }
     }
 }
-
