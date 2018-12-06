@@ -1,0 +1,336 @@
+Q) 
+
+
+
+
+
+PERSON CLASS:
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+interface IPayable
+{
+    double CalculatePay();
+}
+
+namespace employeeInheritance
+{
+    class Person
+    {
+        string FirstName;
+        string LastName;
+        string emailid;
+        DateTime DateOfBirth;
+
+        public Person(string Fname,string Lname,string email,DateTime dob)
+        {
+            FirstName = Fname;
+            LastName = Lname;
+            emailid = email;
+            DateOfBirth = dob;
+            //Console.WriteLine("Fname {0} Lname {1} email {2} Date of Birth{3}",FirstName,LastName,emailid,DateOfBirth);
+        }
+
+        public Boolean isAdult()
+        {
+            DateTime now = DateTime.Today;
+            int age = now.Year - DateOfBirth.Year;
+
+            if(age>18)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+        }
+
+
+        public string sunSign()
+        {
+
+            int month = DateOfBirth.Month;
+            int day = DateOfBirth.Day;
+
+            switch(month)
+            {
+                case 1:
+                    if (day <= 19)
+                        return "Capricorn";
+                    else
+                        return "Aquarius";
+                case 2:
+                    if (day <= 19)
+                        return "Aquarius";
+                    else
+                        return "Pisces";
+                case 3:
+                    if (day <= 20)
+                        return "Pisces";
+                    else
+                        return "Aries";
+                case 4:
+                    if (day <= 19)
+                        return "Aries";
+                    else
+                        return "Tauras";
+                case 5:
+                    if (day <= 20)
+                        return "Taurus";
+                    else
+                        return "Gemini";
+                case 6:
+                    if (day <= 20)
+                        return "Gemini";
+                    else
+                        return "Cancer";
+                case 7:
+                    if (day <= 21)
+                        return "Cancer";
+                    else
+                        return "Leo";
+                case 8:
+                    if (day <= 21)
+                        return "Leo";
+                    else
+                        return "Virgo";
+                case 9:
+                    if (day <= 21)
+                        return "Virgo";
+                    else
+                        return "Libra";
+                case 10:
+                    if (day <= 21)
+                        return "Libra";
+                    else
+                        return "Scorpio";
+                case 11:
+                    if (day <= 21)
+                        return "Scorpio";
+                    else
+                        return "Saggittarius";
+                case 12:
+                    if (day <= 21)
+                        return "Saggittarius";
+                    else
+                        return "Capricorn";
+
+            }
+
+            return " ";
+
+        }
+
+        public bool isBirthday()
+        {
+
+            
+            DateTime now= DateTime.Now;
+            
+
+            if(now.DayOfYear==DateOfBirth.DayOfYear)
+            {
+                return true;
+            }
+            else
+                return false;
+
+        }
+
+        public string ScreenName()
+        {
+
+            //string str = DateOfBirth.ToString("yyyyMMdd");
+            int month = DateOfBirth.Month;
+            int year = DateOfBirth.Year;
+            int day = DateOfBirth.Day;
+
+            string str_month = Convert.ToString(month);
+            string str_year = Convert.ToString(year);
+            string sub_str_year = str_year.Substring(2);
+            string str_day = Convert.ToString(day);
+
+            string final = str_month + str_day + sub_str_year;
+            
+
+            string username = FirstName+LastName+final;
+            return username;
+        }
+
+    }
+
+    
+
+}
+
+EMPLOYEE CLASS:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace employeeInheritance
+{
+    class Employee:Person
+    {
+        protected double salary;
+
+        public Employee(string Fname, string Lname, string email, DateTime dob,double sal):base(Fname,Lname,email,dob)
+        {
+            salary = sal;
+            
+        }
+
+       /* public double ConvertSalary()
+        {
+            double salary1 = Convert.ToDouble(salary);
+            return salary1;
+        } */
+
+
+    }
+}
+
+HOURLY EMPLOYEE CLASS
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace employeeInheritance
+{
+    class HourlyEmployee :Person,IPayable
+    {
+        double HoursWorked;
+        double PayPerHour;
+        double Temp_salary;
+
+        public HourlyEmployee(string Fname, string Lname, string email, DateTime dob, double Hours,double Pay):base(Fname,Lname,email,dob)
+        {
+
+            HoursWorked = Hours;
+            PayPerHour = Pay;
+        }
+
+        public double CalculatePay()
+        {
+            Temp_salary = HoursWorked*PayPerHour;
+
+            return Temp_salary;
+        }
+
+    }
+}
+
+PERMANENT EMPLOYEE CLASS
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace employeeInheritance
+{
+    class PermanentEmployee : Employee,IPayable
+    {
+        double hra;
+        double da;
+        double net_pay;
+        double tax;
+        double total_pay;
+
+        public PermanentEmployee(string Fname, string Lname, string email, DateTime dob, double salary) : base(Fname, Lname, email, dob, salary)
+        {
+
+        }
+
+        public double CalculatePay()
+        {
+            hra = salary * 0.15;
+            da = salary * 0.1;
+            double gross_salary = hra + da + salary;
+            tax = 0.08 * gross_salary;
+            net_pay = gross_salary - tax;
+
+
+            return net_pay;
+
+        }
+    }
+}
+
+main program
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+
+
+namespace employeeInheritance
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            DateTime value = new DateTime(1996,12,31);
+         
+            Employee o = new Employee("Nihar", "Ranjan", "xyz@gmail.com", value,25000);
+
+            
+
+            bool x = o.isAdult();
+
+
+            if (x==true)
+            {
+                Console.WriteLine("The person is above 18 years old");
+            }
+            else
+            {
+                Console.WriteLine("The person is below 18 years old");
+            }
+
+            string sunsign = o.sunSign();
+            Console.WriteLine("The sunsign of the person is {0}",sunsign);
+
+            bool b = o.isBirthday();
+
+            if (b == true)
+            {
+                Console.WriteLine("The person' birthday is today");
+            }
+            else
+            {
+                Console.WriteLine("The person's birthday is not today");
+            }
+
+            string username = o.ScreenName();
+            Console.WriteLine("The username of the person is {0}",username);
+
+
+            HourlyEmployee h = new HourlyEmployee("Nihar", "Ranjan", "xyz@gmail.com", value, 24, 2000);
+            double pay = h.CalculatePay();
+
+            Console.WriteLine("The net pay of hourly employee is {0}",pay);
+
+            PermanentEmployee p = new PermanentEmployee("Nihar", "Ranjan", "xyz@gmail.com", value,50000);
+            double pay1 = p.CalculatePay();
+          
+            Console.WriteLine("The net pay of permanent employee is {0}", pay1);
+        }
+    }
+}
+
