@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace NumberOfDigits
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int n;
+            Console.WriteLine("Enter the number:");
+            n = Convert.ToInt32(Console.ReadLine());
+            int digits = 0;
+            int temp = n;
+
+            while(n>0)
+            {
+               int rem= n % 10;
+                digits++;
+                n = n / 10;
+
+            }
+
+            Console.WriteLine("The number of digits in {0} is {1}", temp, digits);
+            Console.ReadKey();
+
+        }
+    }
+}
