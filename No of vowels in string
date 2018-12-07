@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace VowelsinString
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string str;
+            Console.WriteLine("Enter the string:");
+            str = Console.ReadLine();
+
+            char[] arr = str.ToCharArray();
+            int count = 0;
+            foreach(char c in str)
+            {
+                if(c=='a' || c=='e'|| c=='i'||c=='o'||c=='u')
+                {
+                    count++;
+                }
+            }
+
+            Console.WriteLine("The number of vowels is {0}", count);
+            Console.ReadLine();
+
+
+
+
+        }
+    }
+}
