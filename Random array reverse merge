@@ -1,0 +1,69 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MergeArrays
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arr1 = new int[10];
+            int[] arr2 = new int[10];
+            int min = 0;
+            int max = 100;
+
+            Random rand = new Random();
+            for(int i=0;i<10;i++)
+            {
+                arr1[i] = rand.Next(min,max);
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                arr2[i] = rand.Next(min, max);
+            }
+
+            Console.WriteLine("The elements in array 1 are:");
+            for(int i=0;i<arr1.Length;i++)
+            {
+                Console.WriteLine(arr1[i] + " ");
+            }
+
+            Console.WriteLine();
+
+            Console.WriteLine("The elements in array 2 are:");
+            for (int i = 0; i < arr2.Length; i++)
+            {
+                Console.WriteLine(arr2[i] + " ");
+            }
+
+            Console.WriteLine();
+
+            Array.Sort(arr1);
+            Array.Reverse(arr1);
+
+            Array.Sort(arr2);
+            Array.Reverse(arr2);
+
+            int[] merge = new int[20];
+
+            merge = arr1.Concat(arr2).ToArray();
+            Array.Sort(merge);
+            Array.Reverse(merge);
+
+            Console.WriteLine("The elements in merged array  are:");
+            for (int i = 0; i < merge.Length; i++)
+            {
+                Console.WriteLine(merge[i] + " ");
+            }
+            
+            Console.WriteLine();
+            Console.ReadKey();
+
+
+        }
+    }
+}
