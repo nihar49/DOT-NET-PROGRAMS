@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Sort_andRemove_Duplicates_Array
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+                int[] arr;
+               
+                Console.WriteLine("Enter array size:");
+                int n = Convert.ToInt32(Console.ReadLine());
+                arr = new int[n];
+                Console.WriteLine("Enter elements into array:");
+                for (i = 0; i < n; i++)
+                {
+                    arr[i] = Convert.ToInt32(Console.ReadLine());
+                }
+
+                Array.Sort(arr);
+
+
+                int[] arr1 = new int[n];
+
+                arr1 = arr.Distinct().ToArray();
+
+                Console.WriteLine("The new array is:");
+                for (int s = 0; s < arr1.Length; s++)
+                {
+                    Console.WriteLine(arr1[s] + " ");
+                }
+
+                Console.WriteLine();
+                Console.ReadKey();
+            }
+        }
+    }
+
+
+
+
+
