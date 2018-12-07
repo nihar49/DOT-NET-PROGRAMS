@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DecimalToBinary
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int dec_number;
+            Console.WriteLine("Enter the decimal value:");
+            dec_number = Convert.ToInt32(Console.ReadLine());
+            int temp = dec_number;
+            string rem;
+
+            string bin_value="";
+
+            while(dec_number>0)
+            {
+                rem = Convert.ToString(dec_number % 2);
+                bin_value = bin_value + rem;
+                dec_number = dec_number / 2;
+            }
+
+            char[] arr = bin_value.ToCharArray();
+            Array.Reverse(arr);
+
+            string binary = "";
+            foreach(char c in arr)
+            {
+                binary = binary + c;
+
+            }
+            Console.WriteLine("The binary representation of {0} is {1}", temp, binary);
+            Console.ReadKey();
+
+
+        }
+    }
+}
