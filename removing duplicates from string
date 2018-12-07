@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RemovingDuplicatesString
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string str;
+            Console.WriteLine("Enter the string:");
+            str = Console.ReadLine();
+
+            string result = " ";
+
+           foreach(char c in str)
+            {
+
+                if(result.IndexOf(c)==-1)
+                {
+                    result = result + c;
+                }
+
+
+            }
+
+            Console.WriteLine("String after removing duplicates is" + result);
+            Console.ReadKey();
+            
+
+
+
+        }
+    }
+}
