@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _2ndDigit
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+        
+
+                int num;
+                Console.WriteLine("Enter the number");
+                num = Convert.ToInt32(Console.ReadLine());
+                int rem = 0;
+                int rem1 = 0;
+                int temp = num;
+                if (num < 0)
+                {
+
+                    num = num / 10;
+                    rem = Math.Abs(num % 10);
+                    if(rem==0)
+                    {
+                        rem = -1;
+                    }
+
+
+                }
+                if (num > 0)
+                {
+                    num = num / 10;
+                    rem = num % 10;
+                    if (rem == 0)
+                    {
+                    rem = -1;
+                    }
+
+            }
+
+                Console.WriteLine(rem);
+                Console.ReadKey();
+            }
+        }
+    }
+
+
+
+
+
