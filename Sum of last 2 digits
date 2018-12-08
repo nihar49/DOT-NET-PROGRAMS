@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SumofLastDigits
+{
+    class Program
+    {
+
+        public static int remain(int n1,int n2)
+        {
+            int sum = 0;
+            int rem1 = 0, rem2 = 0;
+            rem1 = Math.Abs(n1 % 10);
+            rem2 = Math.Abs(n2 % 10);
+            sum = rem1 + rem2;
+
+            return sum;
+        }
+
+
+        static void Main(string[] args)
+        {
+            int num1, num2;
+            int sum = 0;
+            Console.WriteLine("Enter 1st number");
+            num1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter 2nd number");
+            num2 = Convert.ToInt32(Console.ReadLine());
+            sum = remain(num1, num2);
+            
+
+
+            Console.WriteLine("The sum of the remainders of two numbers is {0}", sum);
+            Console.ReadKey();
+ 
+
+
+
+        }
+    }
+}
