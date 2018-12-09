@@ -1,0 +1,265 @@
+PERSON CLASS:
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MiniProjectInheritance
+{
+    class Person
+    {
+
+        string First_name;
+        string Last_name;
+        string email;
+        DateTime DateOfBirth;
+
+        public Person(string fname, string l_name, string em, DateTime db)
+        {
+            First_name = fname;
+            Last_name = l_name;
+            email = em;
+            DateOfBirth = db;
+        }
+
+        public Boolean isAdult()
+        {
+            DateTime now = DateTime.Today;
+            int age = now.Year - DateOfBirth.Year;
+
+            if (age > 18)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public string Sunsign()
+        {
+
+            int month = DateOfBirth.Month;
+            int day = DateOfBirth.Day;
+
+            switch (month)
+            {
+                case 1:
+                    if (day <= 19)
+                        return "capricorn";
+                    else
+                        return "Aquarius";
+                case 2:
+                    if (day <= 19)
+                        return "Aquarius";
+                    else
+                        return "Pisces";
+                case 3:
+                    if (day <= 20)
+                        return "Pisces";
+                    else
+                        return "Aries";
+                case 4:
+                    if (day <= 19)
+                        return "Aries";
+                    else
+                        return "Tauras";
+                case 5:
+                    if (day <= 20)
+                        return "Taurus";
+                    else
+                        return "Gemini";
+                case 6:
+                    if (day <= 20)
+                        return "Gemini";
+                    else
+                        return "Cancer";
+                case 7:
+                    if (day <= 21)
+                        return "Cancer";
+                    else
+                        return "Leo";
+                case 8:
+                    if (day <= 21)
+                        return "Leo";
+                    else
+                        return "Virgo";
+                case 9:
+                    if (day <= 21)
+                        return "Virgo";
+                    else
+                        return "Libra";
+                case 10:
+                    if (day <= 21)
+                        return "Libra";
+                    else
+                        return "Scorpio";
+                case 11:
+                    if (day <= 21)
+                        return "Scorpio";
+                    else
+                        return "Saggittarius";
+                case 12:
+                    if (day <= 21)
+                        return "Saggittarius";
+                    else
+                        return "Capricorn";
+
+            }
+
+            return " ";
+
+        }
+
+        public Boolean isBirthday()
+        {
+
+            /*  DateTime now = DateTime.Now;
+
+             if (now.DayOfYear == DateOfBirth.DayOfYear)
+             {
+                 return true;
+             }
+
+             else
+                 return false; */
+
+            int month = DateOfBirth.Month;
+            int day = DateOfBirth.Day;
+
+            DateTime now = DateTime.Now;
+
+            if(month==now.Month && day==now.Day)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public string ScreenName()
+        {
+            int month = DateOfBirth.Month;
+            int day = DateOfBirth.Day;
+            int year = DateOfBirth.Year;
+            string f_name=First_name.ToLower();
+            string l_name = Last_name.ToLower();
+
+            string str1 = Convert.ToString(month);
+            string str2 = Convert.ToString(day);
+            string str3 = Convert.ToString(year);
+
+            string sub_str = str3.Substring(2);
+            string final = f_name+l_name+str1 + str2 + sub_str;
+
+            return final;
+
+        }
+
+
+
+
+    }
+
+}
+
+EMPLOYEE CLASS
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MiniProjectInheritance
+{
+    class Employee:Person
+    {
+
+        double salary;
+        string ins_number;
+        public Employee(string f_name,string l_name,string em,DateTime db,double sal,string ins):base(f_name,l_name,em,db)
+        {
+            salary = sal;
+            ins_number = ins;
+        }
+
+
+
+    }
+}
+
+MAIN PROGRAM
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MiniProjectInheritance
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string first_name;
+            string last_name;
+            string email;
+            string dob;
+            DateTime value;
+            double salary;
+            string insurance;
+
+            Console.WriteLine("Enter First Name:");
+            first_name = Console.ReadLine();
+            Console.WriteLine("Enter Last Name:");
+            last_name = Console.ReadLine();
+            Console.WriteLine("Enter email:");
+            email = Console.ReadLine();
+            Console.WriteLine("Enter date of birth in form of yyyy/mm/dd:");
+            dob = Console.ReadLine();
+            value = Convert.ToDateTime(dob);
+            Console.WriteLine("Enter Annual salary of employee:");
+            salary = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Enter National Insurance Number:");
+            insurance = Console.ReadLine();
+
+            Employee o = new Employee(first_name, last_name, email, value, salary, insurance);
+
+            Boolean b = o.isAdult();
+            if(b==true)
+            {
+                Console.WriteLine("{0} is Adult", first_name);
+            }
+            else
+            {
+                Console.WriteLine("{0} is not an adult", first_name);
+            }
+            string str1 = o.Sunsign();
+            Console.WriteLine("{0}'s sunsign is {1}", first_name,str1 );
+
+
+            Boolean b1 = o.isBirthday();
+            if (b1 == true)
+            {
+                Console.WriteLine("{0}'s birthday is today.", first_name);
+            }
+            else
+            {
+                Console.WriteLine("{0}'s birthday is not today", first_name);
+            }
+
+            Console.WriteLine("{0}'s screenname is {1}", first_name, o.ScreenName());
+
+            Console.ReadKey();
+
+        }
+    }
+}
