@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public int NthPrime(int input1)
+    {
+        //Read only region end
+        //Write code here
+       
+		int flag=0,count=0,i;
+		while(count<input1)
+		{
+			flag=flag+1;
+			for( i=2;i<flag;i++)
+			{
+				if(flag%i==0)
+				{
+					break;
+				}
+			}
+			
+			if(flag==i)
+			{
+				count=count+1;
+			}
+		}
+		
+		
+		return flag;
+		
+		
+		
+    }
+}
