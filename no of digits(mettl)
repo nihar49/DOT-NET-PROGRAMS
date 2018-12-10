@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public int allDigitsCount(int input1)
+    {
+        //Read only region end
+        //Write code here
+        int temp=input1;
+    int rem,count=0;
+    if(input1>=1&&input1<=25000)
+	{
+		while(input1>0)
+		{
+			rem=input1%10;
+			count++;
+			input1=input1/10;
+		}
+	}
+	return count;
+    }
+}
