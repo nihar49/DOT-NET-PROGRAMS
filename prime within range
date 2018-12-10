@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public int countPrimesInRange(int input1,int input2)
+    {
+        //Read only region end
+        //Write code here
+          int count;
+	int prime=0;
+	int i;
+	
+	while(input1<=input2)
+	{
+	    count=0;
+		for(i=2;i<=input1/2;++i)
+		{
+			if(input1%i==0)
+			{
+				count=1;
+				break;
+			}
+		}
+		if(count==0)
+		{
+			prime++;
+		}
+		++input1;
+	}
+	return prime;
+    }
+}
