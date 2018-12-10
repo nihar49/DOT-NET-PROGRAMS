@@ -1,0 +1,120 @@
+PROGRAM CLASS
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StudentException
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            
+            Negative neg = new Negative();
+
+
+            string[] str = new string[3];
+
+            
+
+            int[,] a = new int[3, 3];
+            int m1;
+
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine("Enter Student{0} name:", i+1);
+                str[i] = Console.ReadLine();
+                for (int j = 0; j < 3; j++)
+                {
+                   
+                    Console.WriteLine("Enter marks scored in subject{0}",j+1);
+                    string line = Console.ReadLine();
+                    
+
+                    try
+                    {
+
+                        m1=Convert.ToInt32(line);
+
+                        neg.showSign(m1);
+
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine(" Exception:{0} is not an integer", line);
+                        Console.WriteLine(" ENTER INTEGER ONLY");
+
+                    }
+
+
+                    }
+
+                }
+            }
+
+           
+ 
+           
+
+        }
+    }
+
+EXCEPTION CLASS
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StudentException
+{
+    class NegativeNumberException:Exception
+    {
+       
+        public NegativeNumberException(string message):base(message)
+        {
+            
+        }
+
+
+
+
+
+    }
+}
+
+NEGATIVE CLASS
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StudentException
+{
+    class Negative
+    {
+       
+        public void showSign(int m)
+        {
+        
+
+            if (m<0)
+            {
+                throw (new NegativeNumberException("Number is negative:"));
+            }else
+                {
+                Console.WriteLine("Number is positive");
+                }
+        }
+    }
+}
+
+
+
+
+
