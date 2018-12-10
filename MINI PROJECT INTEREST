@@ -1,0 +1,441 @@
+CLASS NEGATIVE
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MiniProjectFD
+{
+    class Negative
+    {
+        public void showSign(double m)
+        {
+
+
+            if (m < 0)
+            {
+                throw (new NegativeException("Number is negative:"));
+            }
+            
+        }
+    }
+}
+
+INTERFACE Account
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MiniProjectFD
+{
+    interface Account
+    {
+         void CalculateInterest();
+    }
+}
+
+CLASS: RDAccount
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MiniProjectFD
+{
+    class RDAccount:Account
+    {
+        double interest_rate;
+        int no_of_months;
+        double amount;
+        double interest;
+        int age;
+        public void CalculateInterest()
+        {
+            Negative neg = new Negative();
+            Console.WriteLine("Enter the RD Amount:");
+            string line = Console.ReadLine();
+
+            try
+            {
+                amount = Convert.ToDouble(line);
+                neg.showSign(amount);
+
+            }catch
+            {
+                throw new NegativeException("Number can't be negative");
+            }
+
+            Console.WriteLine("Enter the RD maturity Period i.e,  6 or 9 or 12 or 15 or 18 or 21:");
+            no_of_months = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                neg.showSign(no_of_months);
+            }
+            catch
+            {
+                throw new NegativeException("Number can't be negative");
+            }
+
+            Console.WriteLine("Enter your age:");
+            age = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                neg.showSign(age);
+            }
+            catch
+            {
+                throw new NegativeException("Number can't be negative");
+            }
+
+          
+
+            if (age<60)
+            {
+                switch(no_of_months)
+                {
+                    case 6:
+                            interest_rate = 7.50;
+                             break;
+                    case 9:
+                        interest_rate = 7.75;
+                        break;
+                    case 12:
+                        interest_rate = 8.00;
+                        break;
+                    case 15:
+                        interest_rate = 8.25;
+                        break;
+                    case 18:
+                        interest_rate = 8.50;
+                        break;
+                    case 21:
+                        interest_rate = 8.75;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Input");
+                        break;
+                }
+            }
+            if (age > 60)
+            {
+                switch (no_of_months)
+                {
+                    case 6:
+                        interest_rate = 8.00;
+                        break;
+                    case 9:
+                        interest_rate = 8.25;
+                        break;
+                    case 12:
+                        interest_rate = 8.50;
+                        break;
+                    case 15:
+                        interest_rate = 8.75;
+                        break;
+                    case 18:
+                        interest_rate = 9.00;
+                        break;
+                    case 21:
+                        interest_rate = 9.25;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Input");
+                        break;
+                }
+            }
+
+            interest = amount * interest_rate/100;
+            Console.WriteLine("Interest Gained is {0}", interest);
+        }
+    }
+}
+
+CLASS: FDAccount
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MiniProjectFD
+{
+    class FDAccount:Account
+    {
+        double interest_rate;
+        double amount;
+        int no_of_days;
+        int age;
+        double interest;
+        public void CalculateInterest()
+        {
+            Negative neg = new Negative();
+            Console.WriteLine("Enter the FD Amount:");
+            string line = Console.ReadLine();
+            try
+            {
+
+                amount = Convert.ToDouble(line);
+                neg.showSign(amount);
+                
+
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine(" Exception:{0} is not positive", line);
+                Console.WriteLine(" ENTER +ve  ONLY");
+
+            }
+
+            Console.WriteLine("Enter the number of days:");
+            string line1 = Console.ReadLine();
+            try
+            {
+
+                no_of_days = Convert.ToInt32(line1);
+                neg.showSign(no_of_days);
+
+
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine(" Exception:{0} is not positive", line1);
+                Console.WriteLine(" ENTER +ve  ONLY");
+
+            }
+
+            
+            
+            Console.WriteLine("Enter your age:");
+            string line2 = Console.ReadLine();
+            try
+            {
+
+                age = Convert.ToInt32(line2);
+                neg.showSign(age);
+
+
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine(" Exception:{0} is not positive", line2);
+                Console.WriteLine(" ENTER +ve  ONLY");
+
+            }
+
+          
+            
+            if (amount < 10000000)
+            {
+                if (age < 60)
+                {
+                    if (no_of_days >= 7 && no_of_days <= 14)
+                    {
+                        interest_rate = 4.50;
+                    }
+                    if (no_of_days >= 15 && no_of_days <= 29)
+                    {
+                        interest_rate = 4.75;
+                    }
+                    if (no_of_days >= 30 && no_of_days <= 45)
+                    {
+                        interest_rate = 5.50;
+                    }
+                    if (no_of_days >= 45 && no_of_days <= 60)
+                    {
+                        interest_rate = 7;
+                    }
+                    if (no_of_days >= 61 && no_of_days <= 184)
+                    {
+                        interest_rate = 7.50;
+                    }
+                    if (no_of_days >= 185 && no_of_days <= 365)
+                    {
+                        interest_rate = 8.00;
+                    }
+                }
+                else
+                {
+                    if (no_of_days >= 7 && no_of_days <= 14)
+                    {
+                        interest_rate = 5.00;
+                    }
+                    if (no_of_days >= 15 && no_of_days <= 29)
+                    {
+                        interest_rate = 5.25;
+                    }
+                    if (no_of_days >= 30 && no_of_days <= 45)
+                    {
+                        interest_rate = 6.00;
+                    }
+                    if (no_of_days >= 45 && no_of_days <= 60)
+                    {
+                        interest_rate = 7.50;
+                    }
+                    if (no_of_days >= 61 && no_of_days <= 184)
+                    {
+                        interest_rate = 8.00;
+                    }
+                    if (no_of_days >= 185 && no_of_days <= 365)
+                    {
+                        interest_rate = 8.50;
+                    }
+                }
+                if (amount > 10000000)
+                {
+                    if (no_of_days >= 7 && no_of_days <= 14)
+                    {
+                        interest_rate = 6.50;
+                    }
+                    if (no_of_days >= 15 && no_of_days <= 29)
+                    {
+                        interest_rate = 6.75;
+                    }
+                    if (no_of_days >= 30 && no_of_days <= 45)
+                    {
+                        interest_rate = 6.75;
+                    }
+                    if (no_of_days >= 45 && no_of_days <= 60)
+                    {
+                        interest_rate = 8;
+                    }
+                    if (no_of_days >= 61 && no_of_days <= 184)
+                    {
+                        interest_rate = 8.50;
+                    }
+                    if (no_of_days >= 185 && no_of_days <= 365)
+                    {
+                        interest_rate = 10.00;
+                    }
+                }
+            }
+            
+            interest = amount * interest_rate/100;
+            Console.WriteLine("Interest Gained is {0}", interest);
+
+
+        }
+        }
+}
+
+CLASS:SBAccount
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MiniProjectFD
+{
+    class SBAccount:Account
+    {
+        double interest;
+        double interest_rate;
+        double amount;
+        public void CalculateInterest()
+        {
+            Negative neg = new Negative();
+            Console.WriteLine("Enter the average amount in your account:");
+            amount = Convert.ToDouble(Console.ReadLine());
+            try
+            {
+                neg.showSign(amount);
+            }
+            catch
+            {
+                throw new NegativeException("Number can't be negative");
+            }
+
+            Console.WriteLine("Enter type of account in the same format as- NORMAL or NRI:");
+            string str = Console.ReadLine();
+            if (str == "NORMAL")
+            {
+                interest_rate = 4;
+            }
+
+            if (str == "NRI")
+            {
+                interest_rate = 6;
+            }
+            interest = amount * interest_rate/100;
+            Console.WriteLine("Interest Gained:Rs{0}", interest);
+        }
+    }
+}
+
+CLASS: NEGATIVE EXCEPTION
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MiniProjectFD
+{
+    class NegativeException:Exception
+    {
+        public NegativeException(string message):base(message)
+        {
+
+        }
+
+
+    }
+}
+CLASS: PROGRAM
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MiniProjectFD
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int num;
+            do
+            {
+                Console.WriteLine("Choose your option:");
+                Console.WriteLine("1.Interest Calculator-SB");
+                Console.WriteLine("2.Interest Calculator-FD");
+                Console.WriteLine("3.Interest Calculator-RD");
+                Console.WriteLine("4.Exit");
+                num = Convert.ToInt32(Console.ReadLine());
+
+
+                switch (num)
+                {
+                    case 1:
+                        SBAccount o = new SBAccount();
+                        o.CalculateInterest();
+                        break;
+                    case 2:
+                        FDAccount o1 = new FDAccount();
+                        o1.CalculateInterest();
+                        break;
+                    case 3:
+                        RDAccount o2 = new RDAccount();
+                        o2.CalculateInterest();
+                        break;
+                    case 4:
+                        return;
+                    default:
+                        Console.WriteLine("Invalid Choice");
+                        break;
+
+                }
+
+            } while (num != 4);
+
+        }
+    }
+}
