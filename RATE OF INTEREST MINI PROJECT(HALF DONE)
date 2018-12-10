@@ -1,0 +1,266 @@
+CLASS- RDAccount
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MiniProjectFD
+{
+     class ClassRDAccount
+    {
+        double interest_rate;
+        int no_of_months;
+        double amount;
+        double interest;
+        int age;
+
+        public void CalculateInterest()
+        {
+            Console.WriteLine("Enter the RD Amount:");
+            amount = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("Enter the number of months:");
+            no_of_months = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter your age:");
+            age = Convert.ToInt32(Console.ReadLine());
+
+            if (no_of_months)
+        }
+
+
+
+    }
+}
+
+Class FDAccount:
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MiniProjectFD
+{
+     class FDAccount
+    {
+        double interest_rate;
+        double amount;
+        int no_of_days;
+        int age;
+        double interest;
+
+        public void CalculateInterest()
+        {
+            Console.WriteLine("Enter the FD Amount:");
+            amount = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("Enter the number of days:");
+            no_of_days = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter your age:");
+            age= Convert.ToInt32(Console.ReadLine());
+
+            if(amount<0 || no_of_days<0 || age<0)
+            {
+                throw (new NegativeException("Negative input found"));
+            }
+
+            if(amount<10000000)
+            {
+                if (age < 60)
+                {
+                    if (no_of_days >= 7 && no_of_days <= 14)
+                    {
+                        interest_rate = 4.50;
+                    }
+                    if (no_of_days >= 15 && no_of_days <= 29)
+                    {
+                        interest_rate = 4.75;
+                    }
+                    if (no_of_days >= 30 && no_of_days <= 45)
+                    {
+                        interest_rate = 5.50;
+                    }
+                    if (no_of_days >= 45 && no_of_days <= 60)
+                    {
+                        interest_rate = 7;
+                    }
+                    if (no_of_days >= 61 && no_of_days <= 184)
+                    {
+                        interest_rate = 7.50;
+                    }
+
+                    if (no_of_days >= 185 && no_of_days <= 365)
+                    {
+                        interest_rate = 8.00;
+                    }
+
+                }
+                else
+                {
+                    if (no_of_days >= 7 && no_of_days <= 14)
+                    {
+                        interest_rate = 5.00;
+                    }
+                    if (no_of_days >= 15 && no_of_days <= 29)
+                    {
+                        interest_rate = 5.25;
+                    }
+                    if (no_of_days >= 30 && no_of_days <= 45)
+                    {
+                        interest_rate = 6.00;
+                    }
+                    if (no_of_days >= 45 && no_of_days <= 60)
+                    {
+                        interest_rate = 7.50;
+                    }
+                    if (no_of_days >= 61 && no_of_days <= 184)
+                    {
+                        interest_rate = 8.00;
+                    }
+
+                    if (no_of_days >= 185 && no_of_days <= 365)
+                    {
+                        interest_rate = 8.50;
+                    }
+                }
+
+
+                if(amount>10000000)
+                {
+                    if (no_of_days >= 7 && no_of_days <= 14)
+                    {
+                        interest_rate = 6.50;
+                    }
+                    if (no_of_days >= 15 && no_of_days <= 29)
+                    {
+                        interest_rate = 6.75;
+                    }
+                    if (no_of_days >= 30 && no_of_days <= 45)
+                    {
+                        interest_rate = 6.75;
+                    }
+                    if (no_of_days >= 45 && no_of_days <= 60)
+                    {
+                        interest_rate = 8;
+                    }
+                    if (no_of_days >= 61 && no_of_days <= 184)
+                    {
+                        interest_rate = 8.50;
+                    }
+
+                    if (no_of_days >= 185 && no_of_days <= 365)
+                    {
+                        interest_rate = 10.00;
+                    }
+                }
+            }
+
+            interest = amount * interest_rate;
+            Console.WriteLine("Interest Gained is {0}", interest);
+        }
+
+
+
+    }
+}
+
+
+CLASS: SBAccount
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MiniProjectFD
+{
+     class SBAccount
+    {
+        double interest;
+        double interest_rate;
+        double amount;
+
+        public void CalculateInterest()
+        {
+
+            Console.WriteLine("Enter the average amount in your account:");
+            amount = Convert.ToDouble(Console.ReadLine());
+
+            if (amount < 0 )
+            {
+                throw (new NegativeException("Invalid number of amount, Please enter correct values"));
+            }
+
+            Console.WriteLine("Enter type of account in the same format as- NORMAL or NRI:");
+            string str = Console.ReadLine();
+
+            if (str == "NORMAL")
+            {
+                interest_rate = 4;
+            }
+                
+            if(str=="NRI")
+            {
+                interest_rate = 6;
+            }
+
+            interest = amount * interest_rate;
+
+            Console.WriteLine("Interest Gained:Rs{0}", interest);
+
+        }
+
+    }
+}
+
+CLASS: NegativeException
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MiniProjectFD
+{
+    class NegativeException:Exception
+    {
+        public NegativeException(string message):base(message)
+        {
+
+        }
+
+
+    }
+}
+
+
+class: Program
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MiniProjectFD
+{
+     class Program
+    {
+        static void Main(string[] args)
+        {
+            
+
+
+
+
+        }
+    }
+}
+
+
