@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+//Read only region start
+public class UserMainCode
+{
+    public int isPalinNumPossible(int input1)
+    {
+        //Read only region end
+        //Write code here
+        string str=Convert.ToString(input1);
+		
+		int[] count=new int[25000];
+		
+		foreach(char c in str)
+		{
+			count[(int)c]++;
+		}
+		
+		int odd=0;
+		for(int i=0;i<25000;i++)
+		{
+			if(count[i]>0&&char.IsLetterOrDigit((char)i))
+			{
+				if(count[i]%2!=0)
+				{
+					odd++;
+				}
+			}
+		}
+		
+		if(odd>1)
+			return 1;
+		else
+			return 2;
+		
+		
+    }
+}
