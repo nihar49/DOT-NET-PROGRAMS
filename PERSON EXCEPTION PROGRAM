@@ -26,38 +26,48 @@ namespace PersonException
             }
 
 
-            public void validate(string first_name,string last_name)
+        public void validate(string first_name, string last_name)
         {
-
-            foreach (char c in first_name)
+            if (String.IsNullOrEmpty(first_name))
             {
-                bool ck = char.IsDigit(c);
-                if (first_name == String.Empty || ck)
-                {
-
-                    throw new NullOrDigitException("First Name cannot be null or empty string");
-
-                }
+                throw new NullOrDigitException("First Name cannot be null or empty string");
             }
-                
-            
-                foreach (char ch in last_name)
+                foreach (char c in first_name)
                 {
-                bool ck = char.IsDigit(ch);
-                if (last_name == String.Empty || ck)
+                    bool ck = char.IsDigit(c);
+                    if (ck)
                     {
 
-                        throw new ArgumentException(" Last Name cannot be null or empty string");
+                        throw new NullOrDigitException("First Name can only have alphabets");
 
                     }
-                    
+                }
+
+
+                
+                    if (!String.IsNullOrEmpty(last_name))
+                    {
+                    throw new NullOrDigitException("First Name can only have alphabets");
+                    }
+                
+            foreach (char ch in last_name)
+            {
+                bool ck = char.IsDigit(ch);
+                if (ck)
+                        {
+
+                            throw new NullOrDigitException(" Last Name cannot be null or empty string");
+
+                        }
+
+
+                    }
+
+
 
                 }
+
             
-
-
-        }
-
 
 
             public Boolean isAdult()
@@ -195,7 +205,9 @@ namespace PersonException
     }
 
 
-EXCEPTION CLASS
+
+NULL OR DIGIT EXCEPTION CLASS
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -217,8 +229,7 @@ namespace PersonException
     }
 }
 
-program class
-
+PROGRAM CLASS
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -231,56 +242,67 @@ namespace PersonException
     {
         static void Main(string[] args)
         {
-            DateTime value = new DateTime(1996, 12, 31);
-
-            Person o = new Person("Nihar", "Ranjan", "xyz@gmail.com", value);
+            string first_name;
+            string last_name;
+            string email;
+            string dob;
+            DateTime value;
+            Console.WriteLine("Enter First Name:");
+            first_name = Console.ReadLine();
+            Console.WriteLine("Enter Last Name:");
+            last_name = Console.ReadLine();
+            Console.WriteLine("Enter email:");
+            email = Console.ReadLine();
+            Console.WriteLine("Enter date of birth in form of yyyy/mm/dd:");
+            dob = Console.ReadLine();
+            value = Convert.ToDateTime(dob);
+            Person o = new Person(first_name, last_name, email, value);
             try
             {
 
-                o.validate("Nihar", "Ranjan");
+                o.validate(first_name, last_name);
+                bool x = o.isAdult();
+
+
+                if (x == true)
+                {
+                    Console.WriteLine("The person is above 18 years old");
+                }
+                else
+                {
+                    Console.WriteLine("The person is below 18 years old");
+                }
+
+                string sunsign = o.sunSign();
+                Console.WriteLine("The sunsign of the person is {0}", sunsign);
+
+                bool b = o.isBirthday();
+
+                if (b == true)
+                {
+                    Console.WriteLine("The person' birthday is today");
+                }
+                else
+                {
+                    Console.WriteLine("The person's birthday is not today");
+                }
+
+                string username = o.ScreenName();
+                Console.WriteLine("The username of the person is {0}", username);
 
             }
-            catch (FormatException)
+            catch (NullOrDigitException message)
             {
-                Console.WriteLine(" Enter correct input which has no digit or is not null:");
-                
+                // Console.WriteLine(" Enter correct input which has no digit or is not null:");
+                Console.WriteLine(message);
 
             }
 
 
-            bool x = o.isAdult();
-
-
-            if (x == true)
-            {
-                Console.WriteLine("The person is above 18 years old");
-            }
-            else
-            {
-                Console.WriteLine("The person is below 18 years old");
-            }
-
-            string sunsign = o.sunSign();
-            Console.WriteLine("The sunsign of the person is {0}", sunsign);
-
-            bool b = o.isBirthday();
-
-            if (b == true)
-            {
-                Console.WriteLine("The person' birthday is today");
-            }
-            else
-            {
-                Console.WriteLine("The person's birthday is not today");
-            }
-
-            string username = o.ScreenName();
-            Console.WriteLine("The username of the person is {0}", username);
+           
 
             
         }
     }
 }
-
-
 
