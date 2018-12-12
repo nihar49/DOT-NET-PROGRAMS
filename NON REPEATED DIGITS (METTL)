@@ -1,3 +1,6 @@
+
+USING ARRAYS:
+
 using System;
 using System.Collections.Generic;
 
@@ -39,3 +42,48 @@ public class UserMainCode
         return count;
     }
 }
+
+STRING IMPLEMENTATION
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FinalUniqueDigit
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int num;
+            Console.WriteLine("Enter the number");
+            num = int.Parse(Console.ReadLine());
+            string str = Convert.ToString(num);
+            string str1 = " ";
+            int[] count = new int[(int)char.MaxValue];
+
+            foreach(char c in str)
+            {
+                count[c]++;
+            }
+
+            for (int i = 0; i < (int)char.MaxValue; i++)
+            {
+                if(count[i]==1)
+                {
+                    str1 = str1 + (char)i;
+                }
+
+
+            }
+
+            Console.WriteLine("No of non repeated digits are {0}", str1.Length-1);
+        }
+    }
+}
+
+
+
