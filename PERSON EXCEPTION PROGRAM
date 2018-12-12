@@ -45,9 +45,9 @@ namespace PersonException
 
 
                 
-                    if (!String.IsNullOrEmpty(last_name))
+                    if (String.IsNullOrEmpty(last_name))
                     {
-                    throw new NullOrDigitException("First Name can only have alphabets");
+                    throw new NullOrDigitException("Last Name cannot be null or empty string");
                     }
                 
             foreach (char ch in last_name)
@@ -56,7 +56,7 @@ namespace PersonException
                 if (ck)
                         {
 
-                            throw new NullOrDigitException(" Last Name cannot be null or empty string");
+                            throw new NullOrDigitException(" Last Name can only have alphabets ");
 
                         }
 
@@ -203,7 +203,6 @@ namespace PersonException
             }
         }
     }
-
 
 
 NULL OR DIGIT EXCEPTION CLASS
