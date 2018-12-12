@@ -1,0 +1,154 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public int createPIN(int input1,int input2,int input3)
+    {
+        //Read only region end
+        //Write code here
+            int temp = input1;
+            int temp1 = input2;
+            int temp2 = input3;
+
+            string rem_unit = "";
+            int rem1 = input1 % 10;
+            int rem2 = input2 % 10;
+            int rem3 = input3 % 10;
+
+            int alpha;
+            int max_alpha;
+
+            if(rem1<rem2&&rem1<rem3)
+            {
+                alpha = rem1;
+            }
+            else if(rem2<rem1&&rem2<rem3)
+            {
+                alpha = rem2;
+            }
+            else
+            {
+                alpha = rem3;
+            }
+
+            if (rem1 > rem2 && rem1 > rem3)
+            {
+                max_alpha = rem1;
+            }
+            else if (rem2 > rem1 && rem2 > rem3)
+            {
+                max_alpha = rem2;
+            }
+            else
+            {
+                max_alpha = rem3;
+            }
+
+            rem_unit = rem_unit + Convert.ToString(alpha);
+
+            input1 = input1 / 10;
+            input2 = input2 / 10;
+            input3 = input3 / 10;
+            int rem_ten_1 = input1 % 10;
+            int rem_ten_2 = input2 % 10;
+            int rem_ten_3 = input3 % 10;
+
+            int beta;
+            int max_beta;
+
+            if (rem_ten_1 < rem_ten_2 && rem_ten_1 < rem_ten_3)
+            {
+                beta = rem_ten_1;
+            }
+            else if (rem_ten_2 < rem_ten_1 && rem_ten_2 < rem_ten_3)
+            {
+                beta = rem_ten_2;
+            }
+            else
+            {
+                beta = rem_ten_3;
+            }
+
+            if (rem_ten_1 > rem_ten_2 && rem_ten_1 > rem_ten_3)
+            {
+                max_beta = rem_ten_1;
+            }
+            else if (rem_ten_2 > rem_ten_1 && rem_ten_2 > rem_ten_3)
+            {
+                max_beta = rem_ten_2;
+            }
+            else
+            {
+                max_beta = rem_ten_3;
+            }
+
+
+            rem_unit = Convert.ToString(beta)+ rem_unit;
+
+
+            input1 = input1 / 10;
+            
+            input2 = input2 / 10;
+            
+            input3 = input3 / 10;
+            
+            int rem_hundred_1 = input1 % 10;
+            int rem_hundred_2 = input2 % 10;
+            int rem_hundred_3 = input3 % 10;
+
+            int gamma;
+            int max_gamma;
+
+            if (rem_hundred_1 < rem_hundred_2 && rem_hundred_1 < rem_hundred_3)
+            {
+                gamma= rem_hundred_1;
+            }
+            else if (rem_hundred_2 < rem_hundred_1 && rem_hundred_2 < rem_hundred_3)
+            {
+                gamma = rem_hundred_2;
+            }
+            else
+            {
+                gamma= rem_hundred_3;
+            }
+
+            if (rem_hundred_1 > rem_hundred_2 && rem_hundred_1 > rem_hundred_3)
+            {
+                max_gamma = rem_hundred_1;
+            }
+            else if (rem_hundred_2 > rem_hundred_1 && rem_hundred_2 > rem_hundred_3)
+            {
+                max_gamma = rem_hundred_2;
+            }
+            else
+            {
+                max_gamma = rem_hundred_3;
+            }
+
+
+            rem_unit = Convert.ToString(gamma) + rem_unit;
+
+            
+
+            int final_max;
+            if(max_alpha>max_beta&&max_alpha>max_gamma)
+            {
+                final_max = max_alpha;
+            }
+            else if(max_beta > max_alpha && max_beta > max_gamma)
+            {
+                final_max = max_beta;
+            }
+            else
+            {
+                final_max = max_gamma;
+            }
+
+
+            rem_unit = Convert.ToString(final_max) + rem_unit;
+           return int.Parse(rem_unit);
+
+        }
+    }
