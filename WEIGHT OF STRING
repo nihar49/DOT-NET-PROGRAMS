@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+//Read only region start
+public class UserMainCode
+{
+    public int weightOfString(string input1,int input2)
+    {
+        //Read only region end
+        //Write code here
+		int weight=0;
+		string str=input1.ToUpper();
+		
+		if(input2==1)
+		{
+			foreach(char c in str)
+			{
+				bool ck=Char.IsLetter(c);
+				
+				if(ck)
+				{
+					weight=weight+(int)c-64;
+				}
+			}
+			return weight;
+		}
+		
+		if(input2==0)
+		{
+			foreach(char c in str)
+			{
+				bool ck=Char.IsLetter(c);
+				
+				if(ck)
+				{
+					if(c=='A'||c=='E'||c=='I'||c=='O'||c=='U')
+					{
+					weight=weight+0;
+					}
+					else
+					{
+						weight=weight+(int)c-64;
+					}
+				}
+			}
+			return weight;
+			
+			
+		}
+        return weight;
+    }
+}
