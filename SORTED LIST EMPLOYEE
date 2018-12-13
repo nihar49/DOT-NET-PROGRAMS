@@ -1,0 +1,199 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SortedListEmployee
+{
+    class EmployeeDAL
+    {
+        SortedList a1 = new SortedList();
+
+        public Boolean AddEmployee(Employee e)
+        {
+             a1.Add(e.emp_id,e);
+
+
+
+            if (a1.ContainsKey(e.emp_id))
+            {
+                return true;
+            }
+            else return false; 
+        }
+        public Boolean DeleteEmployee(int id)
+        {
+           
+           foreach(DictionaryEntry e in a1)
+            {
+                int key = (int)e.Key;
+              
+                 if (key == id)
+                 {
+                      a1.Remove(id);
+                    return true;
+                 } 
+        
+            }
+           
+            return false;
+        }
+        public string SearchEmployee(int id)
+        {
+            foreach (DictionaryEntry e in a1)
+            {
+                
+                    int key = (int)e.Key;
+                    if (key == id)
+                {
+                    return e.Value as string;
+                }
+                /* else
+                 {
+                     return "employee not present";
+                 }*/
+            }
+            return " ";
+        }
+        public Employee[] GetAllEmployeesistAll()
+        {
+            Employee[] emp = new Employee[a1.Count];
+
+
+            int i = 0;
+            foreach (DictionaryEntry e in a1)
+            {
+
+                Employee o = e.Value as Employee;
+                emp[i] = o;
+
+            }
+            
+
+            return emp;
+        }
+
+
+
+
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SortedListEmployee
+{
+    class Employee
+    {
+
+        public string name { get; set; }
+        public int emp_id { get; set; }
+        public double salary { get; set; }
+        public Employee( int id, string nm,double sal)
+        {
+            name = nm;
+            emp_id = id;
+            salary = sal;
+        }
+    }
+
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SortedListEmployee
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string name;
+            double salary;
+            int id;
+            EmployeeDAL e = new EmployeeDAL();
+            int choice;
+            do
+            {
+                Console.WriteLine("Select Option:");
+                Console.WriteLine("1.ADD EMPLOYEE:");
+                Console.WriteLine("2.REMOVE EMPLOYEE:");
+                Console.WriteLine("3.SEARCH EMPLOYEE:");
+                Console.WriteLine("4. DISPLAY ALL EMPLOYEES:");
+                Console.WriteLine("5.exit");
+
+                choice = int.Parse(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1:
+                        Console.WriteLine("Enter Employee Name:");
+                        name = Console.ReadLine();
+                        Console.WriteLine("Enter Employee ID:");
+                        id = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Enter Salary:");
+                        salary = double.Parse(Console.ReadLine());
+                        bool b1 = e.AddEmployee(new Employee(id, name, salary));
+                        if (b1 == true)
+                        {
+                            Console.WriteLine("Employee added:");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Employee not added");
+                        }
+
+                        break;
+                    case 2:
+                        Console.WriteLine("Enter Employee ID to be deleted:");
+                        id = int.Parse(Console.ReadLine());
+                        bool b3 = e.DeleteEmployee(id);
+                        if (b3 == true)
+                        {
+                            Console.WriteLine("Employee deleted:");
+                        }
+                        else
+                            Console.WriteLine("Employee not deleted");
+                        break;
+                    case 3:
+                        Console.WriteLine("Enter Employee ID to be searched:");
+                        id = int.Parse(Console.ReadLine());
+                        string s1 = e.SearchEmployee(id);
+                        Console.WriteLine(s1);
+                        break;
+
+                    case 4:
+                        Employee[] arr = e.GetAllEmployeesistAll();
+                        Console.WriteLine("All employees present are:");
+                        for (int i = 0; i < arr.Length; i++)
+                        {
+                            Console.Write(arr[i].name + " ");
+                            Console.Write(arr[i].salary + " ");
+                            Console.WriteLine(arr[i].emp_id + " ");
+
+                        }
+                        Console.WriteLine();
+                        break;
+
+
+                    default:
+                        Console.WriteLine("INVALID INPUT");
+                        break;
+                }
+            } while (choice != 5);
+        }
+    }
+}
+
+
+
