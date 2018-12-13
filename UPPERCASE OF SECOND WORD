@@ -1,0 +1,37 @@
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+//Read only region start
+public class UserMainCode
+{
+    public string secondWordUpperCase(string input1)
+    {
+        //Read only region end
+        //Write code here
+	  
+	    string[] str1=input1.Split(' ');
+		
+		if(str1.Length>=2)
+		{
+		string str2=str1[1];
+		
+		char[] arr=str2.ToCharArray();
+		string str3= "";
+		foreach(char c in arr)
+		{
+			str3=str3+Char.ToUpper(c);
+		}
+		
+		return str3;
+		}
+		else
+		{
+			return "LESS";
+		}
+		
+		
+		
+	}
+}
