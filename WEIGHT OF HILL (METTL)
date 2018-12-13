@@ -1,0 +1,23 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public int totalHillWeight(int input1,int input2,int input3)
+    {
+        //Read only region end
+        //Write code here
+		int total_weight=0;
+		for(int i=1;i<=input1;i++)
+		{
+			for(int j=1;j<=i;j++)
+			{
+				total_weight=total_weight+input2;
+			}
+			input2=input2+input3;
+		}
+		
+        return total_weight;
+    }
+}
