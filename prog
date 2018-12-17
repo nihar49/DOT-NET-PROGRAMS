@@ -1,0 +1,188 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public int LeastFrequentDigit(int input1,int input2,int input3,int input4)
+    {
+        //Read only region end
+       int[] arr = { 000, 100, 200, 300, 400, 500, 600, 700, 800, 900 };
+
+            do
+            {
+                arr[input1 % 10]++;
+
+                input1 = input1 / 10;
+            } while (input1 > 0);
+
+            do
+            {
+                int rem = input2 % 10;
+                arr[input2 % 10]++;
+                input2 = input2 / 10;
+            } while (input2 > 0);
+
+            do
+            {
+                int rem = input3 % 10;
+                arr[input3 % 10]++;
+                input3 = input3 / 10;
+            } while (input3 > 0);
+
+            do
+            {
+                int rem = input4 % 10;
+                arr[input4 % 10]++;
+                input4 = input4 / 10;
+            } while (input4 > 0);
+
+             for (int i=0;i<arr.Length;i++)
+            {
+                Console.WriteLine(arr[i]+" ");
+            } 
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = arr[i] % 100;
+            }
+
+             for (int i = 0; i < arr.Length; i++)
+              {
+                  Console.WriteLine(arr[i] + " ");
+              }
+
+		   
+          
+		       int m=100,pos=0;
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] < m && arr[i]!=0)
+                {
+                    m = arr[i];
+					pos=i;
+                }
+            }
+
+           
+
+            return pos;
+		
+    }
+}
+
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public int findSumeetSum(int input1,int input2,int input3,int input4,int input5)
+    {
+        //Read only region end
+        //Write code here
+		string str=input1.ToString();
+		char[] arr=str.ToCharArray();
+		Array.Sort(arr);
+		
+		string s=arr[0].ToString()+arr[1].ToString();
+		
+		string str1=input2.ToString();
+		char[] arr1=str1.ToCharArray();
+		Array.Sort(arr1);
+		
+		string s1=arr1[0].ToString()+arr1[1].ToString();
+		
+		string str2=input3.ToString();
+		char[] arr2=str2.ToCharArray();
+		Array.Sort(arr2);
+		
+		string s2=arr2[0].ToString()+arr2[1].ToString();
+		
+		string str3=input4.ToString();
+		char[] arr3=str3.ToCharArray();
+		Array.Sort(arr3);
+		
+		string s3=arr3[0].ToString()+arr3[1].ToString();
+		
+		string str4=input5.ToString();
+		char[] arr4=str4.ToCharArray();
+		Array.Sort(arr4);
+		
+		string s4=arr4[0].ToString()+arr4[1].ToString();
+		int sum=0;
+		int c1=int.Parse(s);
+		int c2=Convert.ToInt32(s1);
+		int c3=Convert.ToInt32(s2);
+		int c4=Convert.ToInt32(s3);
+		int c5=Convert.ToInt32(s4);
+		
+		sum=c1+c2+c3+c4+c5;
+		
+		return sum;
+    }
+}
+
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    //Assume following return types while writing the code for this question. 
+    public class Result
+    {
+		public int output1;
+		public int output2;
+    }
+
+    public Result decreasingSeq(int[] input1)
+    {
+        //Read only region end
+        //Write code here
+		
+		int c=1;
+		int i=0;
+		int j=0;
+		int k=0;
+		int l=10;
+		
+
+		for(i=j;i<input1.Length-1;i++)
+		{
+			c=1;
+			for(j=i;j<input1.Length;j++)
+			{
+				if(input[j]>input1[j+1])
+				{
+					c++;
+				}
+				else
+				{
+					break;
+				}
+				
+			}
+			input1[k++]=i;		
+		}
+		
+		int max=count[0];
+		for(int i=0;i<arr.Length;i++)
+		{
+			if(arr[i]>max)
+			{
+				max=arr[i];
+			}
+		}
+		
+		
+       Result r=new Result();
+		r.output1=l;
+		r.output2=max;
+		
+        return l,max;
+    }
+}
+
+
+
