@@ -1,0 +1,153 @@
+PRACTISE:
+
+
+
+use DemoDB
+
+Create table test
+(
+   firstname varchar(20),
+   lastname varchar(20),
+   phoneno bigint
+
+)
+
+select * from test
+
+Insert into test(firstname,lastname,phoneno)
+values('Nihar','Ranjan',9438552433)
+
+
+Insert into test(firstname,lastname,phoneno)
+values('Ramya','Singh',9439607433)
+
+select * from test
+
+Create table Department
+(
+   DeptID int primary key identity(200,1),
+   DeptName varchar(20) not null
+)
+
+Insert into Department(DeptName)
+values('DOTNET')
+
+Insert into Department(DeptName)
+values('UNIX')
+
+select * from Department
+
+Create table Employee
+(
+   EmpID int primary key identity(1001,1),
+   EmpName varchar(30) not null,
+   Age int constraint chk_age check(age>=0 and age<=100),
+   [Address] varchar(50) constraint def_addr default 'Bhubaneswar',
+   Dpt_id int foreign key references Department(DeptID)
+
+)
+
+insert into Employee(EmpName,Age,[Address],Dpt_id)
+values ('NIHAR',23,'HYDERABAD',201)
+
+
+insert into Employee(EmpName,Age,[Address],Dpt_id)
+values ('Gourab',23,'NOIDA',200)
+
+SELECT * FROM Employee
+
+update Employee set EmpName='Jignasoo',[Address]='Bhubaneswar' where EmpID=1006
+
+use pubs
+
+select * from titles
+
+select * from titles where [type]='business'
+select * from titles where price>10 and price<20
+select * from titles where price between 20 and 30
+select * from titles where [title] like 'C%'
+select top 5 * from titles
+select distinct [royalty] from titles
+
+select * from titles where price>20 and price<55
+
+select * from employee
+
+select * from employee where hire_date>'1-12-90'
+
+select hire_date from employee
+
+update titles set price=(0.10*price)
+
+select * from titles
+
+select title from titles where title_id like'B%'
+
+
+HANDS ON:
+
+use pubs
+select * from titles
+
+select * from titles where [type]='business'
+select * from titles where price>10 and price<20
+select * from titles where price between 20 and 30
+select * from titles where [title] like 'C%'
+select top 5 * from titles
+select distinct [royalty] from titles
+
+select * from titles where price>20 and price<55
+
+select * from employee
+
+select * from employee where hire_date>'1-12-90'
+
+select hire_date from employee
+
+update titles set price=(0.10*price)
+
+select * from titles
+
+select title from titles where title_id like'B%'
+
+select pub_id  from titles where title='Net Etiquette'
+
+alter table titles add newprice float
+update titles set newprice=price+price*0.2
+
+select * from publishers
+
+select * from employee where year(hire_date)=1990
+
+select titles.title,publishers.city from publishers  INNER JOIN titles ON 
+titles.pub_id=publishers.pub_id where publishers.city like 'b%'
+
+select * from publishers
+
+select titles.title,pub_name from publishers INNER JOIN titles ON titles.pub_id=publishers.pub_id
+ where title='Net Etiquette'
+
+ select * from sales
+ select * from titles
+
+ select titles.newprice*sales.qty,titles.title  from sales INNER JOIN titles ON titles.title_id=sales.title_id 
+ INNER JOIN publishers ON publishers.pub_id=titles.pub_id where pub_name='New Moon Books'
+
+ select * from employee where YEAR(hire_date)=1989
+ select * from employee
+ insert into employee
+ values ('LMA42628F','Nihar','S','Ranjan',14,40,1389,'2018-12-26')
+ 
+ update employee set job_id=12 where fname='Pedro' and lname='Afonso'
+
+ update employee set lname='Drexler' where emp_id='VPA30890F'
+
+ select * from employee where month(hire_date) between 1 and 3
+
+ select RIGHT(lname,3) as LAST_3_NAME FROM employee
+ 
+  select LOWER(SUBSTRING(fname,1,1))+UPPER(SUBSTRING(fname,2,LEN(fname))) as Mod_Name from employee 
+  
+  
+ 
+ 
