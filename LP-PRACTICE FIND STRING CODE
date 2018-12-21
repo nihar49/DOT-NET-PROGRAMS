@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+             string input1 = "World Wide Web";
+            //string input1 = "World ";
+
+            string str = input1.ToUpper();
+            string[] arr = str.Split(' ');
+            string res = "";
+            int sum=0;
+            
+            for(int i=0;i<arr.Length;i++)
+            {
+                char[] arr1 = arr[i].ToCharArray();
+
+                for(int j=0;j<arr1.Length/2;j++)
+                {
+                    sum = sum + Math.Abs(GetWeight(arr1[j]) - GetWeight(arr1[arr1.Length - j - 1]));
+                   
+                    
+                }
+
+                if (arr1.Length % 2 != 0)
+                {
+                    sum = sum + GetWeight(arr1[arr1.Length / 2 ]);
+                }
+
+                res = res + sum.ToString();
+                sum = 0;
+                 
+            }
+
+            
+
+            Console.WriteLine(res);
+            
+
+
+
+
+
+        }
+
+        public static int GetWeight(char c)
+        {
+            int weight = (int)c - 64;
+            //Console.WriteLine(weight);
+            return weight;
+            
+            
+        }
+
+    }
+}
