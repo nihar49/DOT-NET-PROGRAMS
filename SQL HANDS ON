@@ -155,4 +155,13 @@ select hire_date,fname from employee
 where DATEDIFF(day,hire_date,eomonth(hire_date)) between 1 and 4
 select * from employee
  
- 
+ select employee.fname,jobs.job_desc from jobs INNER JOIN employee on jobs.job_id=employee.job_id where (employee.salary=2000 or employee.salary=3000 or employee.salary=5000) and
+jobs.job_desc='Marketing Manager' or jobs.job_desc='Designer' 
+
+/*TO DISPLAY EMPLOYEE WITH MINIMUM AND MAXIMUM SALARY*/
+select fname,lname,MAX(salary) as Max_salary from employee where salary=(select MAX(salary) from employee) group by fname,lname
+
+select fname,lname,MIN(salary) as Min_salary from employee where salary=(select MIN(salary) from employee) group by fname,lname
+
+
+
