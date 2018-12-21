@@ -148,6 +148,11 @@ select titles.title,pub_name from publishers INNER JOIN titles ON titles.pub_id=
  
   select LOWER(SUBSTRING(fname,1,1))+UPPER(SUBSTRING(fname,2,LEN(fname))) as Mod_Name from employee 
   
-  
+  use pubs
+select concat(fname, Replicate('*',Len(fname ))) as New_name from employee
+
+select hire_date,fname from employee
+where DATEDIFF(day,hire_date,eomonth(hire_date)) between 1 and 4
+select * from employee
  
  
