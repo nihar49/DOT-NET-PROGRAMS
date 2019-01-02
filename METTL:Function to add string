@@ -1,11 +1,18 @@
- public static int[] addTwoNumbers(string s1, string s2)
-    {
+ using System;
+using System.Collections.Generic;
 
-        char[] num1 = s1.ToCharArray();
-        char[] num2 = s2.ToCharArray();
+//Read only region start
+public class UserMainCode
+{
+    public string addNumberStrings(string input1,string input2)
+    {
+        //Read only region end
+        //Write code here
+       char[] num1 = input1.ToCharArray();
+        char[] num2 = input2.ToCharArray();
         int sum = 0;
         int carry = 0;
-        int size = (s1.Length > s2.Length) ? s1.Length + 1 : s2.Length + 1;
+        int size = (input1.Length > input2.Length) ? input1.Length + 1 : input2.Length + 1;
         int[] result = new int[size];
         int index = size - 1;
         int num1index = num1.Length - 1;
@@ -40,7 +47,29 @@
             {
                 result[index] = carry;
             }
-
-
-        return result;
+       
+		/*foreach(var v in result)
+		{
+			Console.Write(v+ "");
+		}
+		*/
+		string res="";
+		string str1="";
+		foreach(var v in result)
+		{
+			res=res+v.ToString();
+		}
+		
+		if(result[0]==0)
+		{
+			str1=res.Substring(1);
+		}
+		else
+		{
+			str1=res;
+		}
+		
+		Console.WriteLine(str1);
+		return str1;
     }
+}
