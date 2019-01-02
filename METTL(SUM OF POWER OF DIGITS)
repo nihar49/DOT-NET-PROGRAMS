@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+//Read only region start
+public class UserMainCode
+{
+    public int sumOfPowerOfDigits(int input1)
+    {
+        //Read only region end
+        //Write code here
+		int size=input1.ToString().Length;
+        int[] arr=new int[size];
+		int i=0;
+		
+		while(input1>0)
+		{
+			arr[i++]=input1%10;
+			input1=input1/10;
+		}
+		Array.Reverse(arr);
+		foreach(int v in arr)
+		{
+			Console.Write(v+" ");
+		}
+		
+		int sum=0;
+		for(int j=0;j<arr.Length-1;j++)
+		{
+			
+			sum=sum+Convert.ToInt32(Math.Pow(arr[j],arr[j+1]));
+			
+		}
+		
+		Console.WriteLine(sum);
+		
+		return sum+1;
+		
+    }
+}
