@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public int sumOfSumsOfDigits(int input1)
+    {
+        //Read only region end
+        //Write code here
+		string s=input1.ToString();
+		int len=s.Length;
+        int[] arr=new int[len];
+		int c=0;
+		while(input1>0)
+		{
+			arr[c]=input1%10;
+			c++;
+			input1=input1/10;
+		}
+		Array.Reverse(arr);
+		
+		foreach(var v in arr)
+		{
+			Console.Write(v+"");
+		}
+			
+		int sum=0,final_sum=0;
+		int flag=0;
+		for(int i=flag;i<arr.Length;i++)
+		{
+		for(int j=flag;j<arr.Length;j++)
+		{
+			sum=sum+arr[j];
+		}
+	    final_sum=final_sum+sum;
+		sum=0;
+		flag++;
+		}
+		
+		Console.WriteLine(final_sum);
+		return final_sum;
+		
+    }
+}
