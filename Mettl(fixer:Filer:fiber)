@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+//Read only region start
+public class UserMainCode
+{
+    public string identifyPossibleWords(string input1,string input2)
+    {
+        //Read only region end
+        //Write code here
+		input1=input1.ToUpper();
+		input2=input2.ToUpper();
+		char[] charArray=input1.ToCharArray();
+		string[] strArray=input2.Split(':');
+		string result="";
+		for(int i=0;i<strArray.Length;i++)
+		{
+			bool b=false;
+			char[] arr=strArray[i].ToCharArray();
+			
+			if(charArray.Length==arr.Length)
+			{
+				for(int j=0;j<charArray.Length;j++)
+				{
+					if(charArray[j]==arr[j]||charArray[j]=='_')
+					{
+						b=true;
+					}
+					else
+					{
+						b=false;
+						break;
+					}
+				}
+			}
+			if(b)
+			{
+				result=result+":"+strArray[i];
+			}
+			
+		}
+										   
+		if(String.IsNullOrEmpty(result))
+		{
+			return "ERROR-009";
+		}
+		else
+		{
+		return result.Substring(1);
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+    }
+}
