@@ -1,0 +1,72 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    //Assume following return types while writing the code for this question. 
+    public class Result
+    {
+		public string output1;
+		public string output2;
+		public string output3;
+    }
+
+    public Result encodeThreeStrings(string input1,string input2,string input3)
+    {
+        //Read only region end
+        //Write code here
+        string[] s1=String_sub(input1);
+		string[] s2=String_sub(input2);
+		string[] s3=String_sub(input3);
+		
+		Result r=new Result();
+		r.output1=s1[0]+s2[0]+s3[0];
+		r.output2=s1[1]+s2[1]+s3[1];
+		
+		string rs=s1[2]+s2[2]+s3[2];
+		string str="";
+		foreach(char c in rs)
+		{
+			if(char.IsUpper(c))
+			{
+				str=str+char.ToLower(c).ToString();
+			}
+			else
+				str=str+char.ToUpper(c).ToString();
+		}
+		r.output3=str;
+		return r;
+		
+    }
+	
+	string[] String_sub(string s)
+	{
+		int l=s.Length;
+		int r=l%3;
+		int q=l/3;
+		string[] strArray=new String[3];
+		
+		if(r==0)
+		{
+			strArray[0]=s.Substring(0*q,q);
+			strArray[1]=s.Substring(1*q,q);
+			strArray[2]=s.Substring(2*q,q);
+		}
+		else if(r==1)
+		{
+			strArray[0]=s.Substring(0*q,q);
+			strArray[1]=s.Substring(q,q+1);
+			strArray[2]=s.Substring((2*q)+1,q);	
+		}
+		else if(r==2)
+		{
+			strArray[0]=s.Substring(0*q,q+1);
+			strArray[1]=s.Substring((1*q)+1,q);
+			strArray[2]=s.Substring((2*q)+1,q+1);
+		}
+		
+		return strArray;
+	}
+	
+}
