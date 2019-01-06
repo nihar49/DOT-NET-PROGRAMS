@@ -1,0 +1,67 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public int findNumberOfImages(int[] input1,char[] input2)
+    {
+        //Read only region end
+        //Write code here
+        //throw new NotImplementedException("Method  findNumberOfImages(int[] input1,char[] input2) not Implemented.");
+    
+	   int length=input1[0];
+	   int load_time=input1[1];
+	   int ori_time=input1[2];
+	   int  limit=input1[3];
+		int total_time=0,count=0;
+		
+	   for(int i=0;i<input2.Length;i++)
+	   {
+		   if(i==0)
+		   {
+			   if(input2[i]=='h')
+			   {
+		
+			   total_time=ori_time+1;
+			   Console.WriteLine(total_time);
+			   }
+			   else
+			   {
+				total_time+=1;
+				   Console.WriteLine(total_time);
+			   }
+		   }
+		   else
+		   {
+			   if(input2[i]=='h')
+			   {
+			   total_time+=ori_time+load_time+1;
+			   Console.WriteLine(total_time);
+			   }
+			   else
+			   {
+				   total_time=total_time+load_time+1;
+				   Console.WriteLine(total_time);
+			   }
+			   
+		   }
+		   if(total_time>limit)
+		   {
+
+			   break;
+		   }
+		   else
+		   {
+                count++;
+		   }
+		   		   
+	   }
+	
+	    return count;
+	
+	
+	
+	
+	}
+}
