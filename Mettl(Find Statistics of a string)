@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public string StringStatistics(string input1)
+    {
+        //Read only region end
+        //Write code here
+        //throw new NotImplementedException("Method  StringStatistics(string input1) not Implemented.");
+            string alpha = "";
+            int sum = 0;
+            int alp = 0,dig=0,sp=0;
+            string result = "";
+            foreach (char c in input1)
+            {
+                if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z')
+                {
+                    alp++;
+                    alpha = alpha + c;
+                }
+                else if (c >= '0' && c <= '9')
+                {
+                    dig++;
+                    sum = sum + c-'0';
+                }
+                else
+                    sp++;
+            }
+
+            if(dig==0||alp==0)
+            {
+                Console.WriteLine("ZERO");
+				return "ZERO";
+            }
+            else
+            {
+                Console.WriteLine(alpha);
+                Console.WriteLine(sum);
+                result = alp.ToString() + alpha + sum.ToString();
+                Console.WriteLine(result);
+				return result;
+
+            }
+
+        }
+
+		
+		
+	
+	}
