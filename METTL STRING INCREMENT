@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public string FindString(string input1)
+    {
+        //Read only region end
+        //Write code here
+        //throw new NotImplementedException("Method  FindString(string input1) not Implemented.");
+        
+	    string[] arr=input1.Split(' ');
+		string s="";
+		string final="";
+		for(int i=0;i<arr.Length;i++)
+		{
+			char[] a=arr[i].ToCharArray();
+			foreach(char c in a)
+			{
+				
+				if(((int)char.ToUpper(c)-64)+a.Length>26)
+				{
+					if(char.IsUpper(c))
+					{
+					s=s+"Z";
+					}
+					else
+					{
+						s=s+"z";
+					}
+				}
+				else
+				{
+				int k=(int)c;
+				k=k+a.Length;
+				char b=(char)k;
+				s=s+b.ToString();
+				}
+				
+			}
+			
+			s=s+" ";
+			
+			
+		}
+	   final=final+s;
+	   string sub=final.Substring(0,final.Length-1);
+	   Console.WriteLine(sub);
+	
+	  return sub;
+	
+	}
+}
