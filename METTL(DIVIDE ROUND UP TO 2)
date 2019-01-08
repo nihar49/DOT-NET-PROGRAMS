@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public double FindAverage(int input1)
+    {
+        //Read only region end
+        //Write code here
+        //throw new NotImplementedException("Method  FindAverage(int input1) not Implemented.");
+    
+		int[] arr=new int[input1.ToString().Length];
+		char[] c_arr=input1.ToString().ToCharArray();
+		int i=0;
+		int len=0;
+		double sum=0;
+		foreach(char c in c_arr )
+		{
+			arr[i]=int.Parse(c.ToString());
+			sum=sum+arr[i];
+			i++;
+		}
+  	    double divide=0;
+		if(arr[0]==0)
+		{
+			len=input1.ToString().Length-1;
+		}
+	    else
+			len=input1.ToString().Length;
+		
+		divide=sum/len;
+		return Math.Round(divide,2);
+	
+	}
+}
