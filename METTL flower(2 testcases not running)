@@ -9,46 +9,45 @@ public class UserMainCode
         //Read only region end
         //Write code here
         //throw new NotImplementedException("Method  FindMinDays(int input1,string input2) not Implemented.");
-        
-	   string[]arr=input2.Split(' ');
-		int[] a1=new int[arr.Length];
-		for(int i=0;i<arr.Length;i++)
-		{
-			a1[i]=Convert.ToInt32(arr[i]);
-			
-		}
-	     
-	    Array.Sort(a1);
-		Array.Reverse(a1);
-		int count=0,sum=0,flag=0;
-		for(int i=0;i<a1.Length;i++)
-		{
-			sum=sum+a1[i];
-			if(sum==input1)
-			{
-				count++;
-				flag=1;
-				break;
-			}
-			else
-				count++;
-		}
-		
-		
-		
-		
-		if(flag==1)
-		{
-		return count;
-		}
-		else if(input1==0)
-		{
-			return 0;
-		}
-		else
-			return -1;
-	
-	
-	
-	}
+          string[]arr=input2.Split(' ');
+ int[] a1=new int[arr.Length];
+ for(int i=0;i<arr.Length;i++)
+ {
+  a1[i]=Convert.ToInt32(arr[i]);
+  
+ }
+     
+    Array.Sort(a1);
+ Array.Reverse(a1);
+ int count=0,sum=0;
+ for(int i=0;i<a1.Length;i++)
+ {
+  sum=sum+a1[i];
+  if(sum<input1)
+  {
+   count++;
+  }
+  else if(sum >= input1)
+  {
+   count++;
+   break;
+  }
+ }
+ Console.Write(count);
+ 
+ 
+ 
+ if(input1 == 0)
+     return 0;
+ else if(sum < input1)
+  return -1;
+ else
+  return count;
+ 
+ 
+ 
+ 
+
+
+}
 }
