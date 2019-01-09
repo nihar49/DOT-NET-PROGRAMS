@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public int weightOfString(string input1,int input2)
+    {
+        //Read only region end
+        //Write code here
+        //throw new NotImplementedException("Method  weightOfString(string input1,int input2) not Implemented.");
+        int weight=0;
+		string s="";
+		foreach(char k in input1)
+		{
+			s=s+char.ToUpper(k);
+		}
+		
+			if(input2==0)
+			{
+				foreach(char c in s)
+		       {
+			       
+				if(char.IsLetter(c))
+				{
+					if(c=='A'||c=='E'||c=='I'||c=='O'||c=='U')
+					{
+					weight=weight+0;
+					}
+					else
+					{
+						weight=weight+(int)c-64;
+					}
+				}
+			}
+		}
+		else
+		{
+			foreach(char c in s)
+		       {
+			      
+				if(char.IsLetter(c))
+				{
+					weight=weight+(int)c-64;
+				}
+			   }
+			
+		}
+		
+		return weight;
+	
+	
+	
+	
+	
+	}
+}
