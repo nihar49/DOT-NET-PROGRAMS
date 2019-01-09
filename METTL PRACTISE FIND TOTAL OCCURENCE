@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public int FindNumberOfOccurrence(int input1,int input2)
+    {
+        //Read only region end
+        //Write code here
+        //throw new NotImplementedException("Method  FindNumberOfOccurrence(int input1,int input2) not Implemented.");
+    
+	    int count=0;
+	    int temp=0;
+		for(int i=1;i<=input2;i++)
+		{
+			temp=i;
+			while(temp>0)
+			{
+				if(temp%10==input1)
+				{
+					count++;
+				}
+				temp=temp/10;
+			}
+		}
+	
+	   return count;
+	}
+}
