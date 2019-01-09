@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public Boolean StepNumber(int input1)
+    {
+        //Read only region end
+        //Write code here
+       // throw new NotImplementedException("Method  StepNumber(int input1) not Implemented.");
+       bool isStep=false;
+		int count=0,count1=0,flag=0;
+		
+		int[] arr=new int[input1.ToString().Length];
+		int c=0;
+		while(input1>0)
+		{
+			arr[c]=input1%10;
+			c++;
+			input1=input1/10;
+		}
+		
+		for(int i=0;i<arr.Length;i++)
+		{
+			for(int j=flag;j<arr.Length-1;j++)
+			{
+				if((arr[j]-arr[j+1])==1 || (arr[j]-arr[j+1])==0 || (arr[j]-arr[j+1])==-1)
+				{
+					count++;
+				}
+				else
+				{
+					count1++;
+				}
+				flag++;
+			}
+		}
+		
+	   if(count1>0)
+	   {
+		   isStep=false;
+	   }
+		else
+		{
+			isStep=true;
+		}
+	
+	  return isStep;
+	}
+}
