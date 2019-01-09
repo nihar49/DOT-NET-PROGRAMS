@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public string reverseWordsandCase(string input1,int input2)
+    {
+        //Read only region end
+        //Write code here
+        //throw new NotImplementedException("Method  reverseWordsandCase(string input1,int input2) not Implemented.");
+         string[] str=input1.Split(' ');
+		string s="";
+		if(input2==0)
+		{
+			for(int i=0;i<str.Length;i++)
+			{
+			   char[] arr=str[i].ToCharArray();
+			
+			Array.Reverse(arr);
+			s=s+new String(arr)+" ";
+			}
+		}
+	    else
+		{
+			for(int i=0;i<str.Length;i++)
+			{
+			   char[] arr=str[i].ToCharArray();
+			   Array.Reverse(arr);
+			   int	Length=arr.Length;
+				for(int j=0;j<arr.Length;j++)
+				{
+					if(char.IsUpper(arr[Length-1]))
+					   {
+						  arr[Length-1]=char.ToLower(arr[Length-1]);
+					   }
+					  if(char.IsLetter(arr[0]))
+					  {
+						  if(char.IsLower(arr[0]))
+						  {
+							  arr[0]=char.ToUpper(arr[0]);
+						  }
+					  }
+						  else
+						  {
+							  if(char.IsLower(arr[Length-1]))
+							  {
+								  arr[Length-1]=char.ToUpper(arr[Length-1]);
+							  }
+						  }
+					  
+					
+					
+					
+				}
+			
+				
+				 s=s+new String(arr)+" ";
+				
+				
+				
+			}
+			
+			
+			
+			
+		}
+	
+	return s.Substring(0,s.Length-1);
+	
+	
+	
+	
+	}
+}
